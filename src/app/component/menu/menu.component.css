@@ -3,6 +3,10 @@ nav {
     box-shadow: none;
 }
 
+nav ul a:hover {
+    background-color: #a3a3a3;
+}
+
 .logo {
-    padding-top: 10px;    
+    padding-top: 10px;
 }

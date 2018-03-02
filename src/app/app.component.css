@@ -1,16 +1,30 @@
+body {
+    margin: 0 0 0 0px;
+    background-color: #e3e3e3;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
 #topo {
     background-color: #515151;
-    height: 100px;
+    height: 70px;
     color: #e18109;
 }
+
 #topo .col {
     text-align: center;
-}				
+}
+
+#conteudo {
+	flex: 1 0 auto;
+    margin-top: 70px;
+}
+
 #rodape {
     padding-top: 20px;
     background-color: #515151;
-    height: 130px;
-    width: 100%;
-    position: fixed;
     bottom: 0px;
+    display: block;
 }

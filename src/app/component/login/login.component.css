@@ -2,15 +2,11 @@
     background-color: #515151;
     color: #e18109;
     border: 0px;
-    font-size: 12px;
     padding: 10px;
 }
 .loginFields {
     background-color: #d3d3d3 !important;
-    border: 3px thick #a3a3a3 !important;
-    margin-bottom: 0px !important;
+    margin: 5px !important;
     padding: 5px !important;
-    font-size: 15px  !important;
     height: auto  !important;   
-    font-family: 'Roboto Mono', monospace;    
 }
