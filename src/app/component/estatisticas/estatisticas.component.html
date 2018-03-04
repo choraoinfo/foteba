@@ -1,3 +1,7 @@
-<p>
-  estatisticas works!
-</p>
+<div class="container">
+    <div class="row">
+        <ul class="collection">
+            <li class="collection-item" *ngFor="let estatistica of estatisticas">{{ estatistica.titulo }}</li>
+        </ul>
+    </div>
+</div>

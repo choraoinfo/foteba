@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { AtletaService } from '../../service/atleta.service';
 
 @Component({
-  selector: 'app-atletas',
-  templateUrl: './atletas.component.html',
-  styleUrls: ['./atletas.component.css']
+    selector: 'app-atletas',
+    templateUrl: './atletas.component.html',
+    styleUrls: ['./atletas.component.css']
 })
 export class AtletasComponent implements OnInit {
 
-  constructor() { }
+    atletas : Object[];
+    
+    constructor(private atletaService : AtletaService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.atletas = this.atletaService.getAtletas();
+    }
 
 }
