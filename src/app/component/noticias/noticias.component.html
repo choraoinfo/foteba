@@ -2,7 +2,10 @@
     <h3 class="section-title">Not&iacute;cias</h3>
     <div class="row">
         <ul class="collection">
-            <li class="collection-item" *ngFor="let noticia of noticias">{{ noticia.titulo }}</li>
+            <li class="collection-item" *ngFor="let noticia of noticias">
+                <h5>{{ noticia.titulo }}</h5>
+                <p [innerHTML]="noticia.descricao"></p>
+            </li>
         </ul>
     </div>
 </div>

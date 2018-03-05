@@ -6,6 +6,7 @@ import { Atleta } from '../entity/atleta';
 export class AtletaService {
 
     SERVICE = "atletas";
+
     constructor(private getter: GetterService) { }
 
     getAtletas(): Promise<Atleta[]> {

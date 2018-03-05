@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegraService } from '../../service/regra.service';
+import { Regra } from '../../entity/regra';
 
 @Component({
     selector: 'app-regras',
@@ -8,12 +9,16 @@ import { RegraService } from '../../service/regra.service';
 })
 export class RegrasComponent implements OnInit {
 
-    regras : Object[];
+    promiseRegras: Promise<Regra[]>;
+    regras: Regra[];
 
     constructor(private regraService: RegraService) { }
 
     ngOnInit() {
-        this.regras = this.regraService.getRegras();
-  }
+        this.promiseRegras = this.regraService.getRegras();
+        this.promiseRegras.then(
+            regras => this.regras = regras,
+            error => console.log(error));
+    }
 
 }

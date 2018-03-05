@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
+import { GetterService } from './getter.service';
+import { Regra } from '../entity/regra';
 
 @Injectable()
 export class RegraService {
 
-  constructor() {}
+    REGRAS = "regras";
 
-  getRegras(){
-      return [{'titulo':'regra1'}, {'titulo' : 'regra2'}];
-  }
+    constructor(private getter : GetterService) { }
 
+    getRegras(): Promise<Regra[]> {
+        return this.getter.get(this.REGRAS);
+    }
 }

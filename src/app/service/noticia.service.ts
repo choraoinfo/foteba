@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
+import { GetterService } from './getter.service';
+import { Noticia } from '../entity/noticia';
 
 @Injectable()
 export class NoticiaService {
 
-	constructor() { }
+    NOTICIAS = "noticias";
 
-	getNoticias() {
-		return [{'titulo':'Noticia1', 'texto' : 'texto1'},{'titulo':'Noticia2', 'texto' : 'texto2'}];
-	}
+    constructor(private getter : GetterService) { }
+
+    getNoticias(): Promise<Noticia[]> {
+        return this.getter.get(this.NOTICIAS);
+    }
 }

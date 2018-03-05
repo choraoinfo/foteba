@@ -20,6 +20,7 @@ import { EstatisticaService } from './service/estatistica.service';
 import { LogadoComponent } from './component/logado/logado.component';
 import { Http, HttpModule } from '@angular/http';
 import { GetterService } from './service/getter.service';
+import { AutenticacaoServiceService } from './service/autenticacao-service.service';
 
 @NgModule({
   declarations: [    
@@ -30,7 +31,7 @@ import { GetterService } from './service/getter.service';
     routing,
     HttpModule
   ],
-  providers: [JogoService,NoticiaService,RegraService,AtletaService,EstatisticaService,GetterService],
+  providers: [JogoService,NoticiaService,RegraService,AtletaService,EstatisticaService,GetterService,AutenticacaoServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

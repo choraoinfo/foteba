@@ -7,10 +7,10 @@
 	<router-outlet></router-outlet>
 </div>		
 <div id="rodape">
-	<div class="container" *ngIf="!isLogged">
+	<div class="container" *ngIf="!isLogado()">
 		<app-login></app-login>
 	</div>
-	<div class="container" *ngIf="isLogged">
+	<div class="container" *ngIf="isLogado()">
         <app-logado></app-logado>
     </div>
 </div>
