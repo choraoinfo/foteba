@@ -1,16 +1,16 @@
 <div id="topo">
-	<div class="container">
-		<app-menu></app-menu>
-	</div>
-</div>		
+    <div class="container">
+        <app-menu></app-menu>
+    </div>
+</div>
 <div id="conteudo">
-	<router-outlet></router-outlet>
-</div>		
+    <router-outlet></router-outlet>
+</div>
 <div id="rodape">
-	<div class="container" *ngIf="!isLogado()">
-		<app-login></app-login>
-	</div>
-	<div class="container" *ngIf="isLogado()">
+    <div class="container" *ngIf="!isLogado()">
+        <app-login></app-login>
+    </div>
+    <div class="container" *ngIf="isLogado()">
         <app-logado></app-logado>
     </div>
 </div>

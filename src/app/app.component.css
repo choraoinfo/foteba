@@ -1,3 +1,9 @@
+@media all and (max-width: 1000px){
+    #conteudo {
+        margin-top: 80px;
+    }
+}
+
 body {
     margin: 0 0 0 0px;
     background-color: #e3e3e3;
