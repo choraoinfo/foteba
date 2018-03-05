@@ -1,3 +1,15 @@
 #rodape .row {
     padding-bottom: 30px;
 }
+
+i {
+    padding: 10px;
+}
+
+.icon-text {
+    color: #fff;
+}
+
+.login-icon {
+    cursor: pointer;
+}
