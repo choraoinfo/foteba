@@ -19,6 +19,7 @@ import { AtletaService } from './service/atleta.service';
 import { EstatisticaService } from './service/estatistica.service';
 import { LogadoComponent } from './component/logado/logado.component';
 import { Http, HttpModule } from '@angular/http';
+import { GetterService } from './service/getter.service';
 
 @NgModule({
   declarations: [    
@@ -29,7 +30,7 @@ import { Http, HttpModule } from '@angular/http';
     routing,
     HttpModule
   ],
-  providers: [JogoService,NoticiaService,RegraService,AtletaService,EstatisticaService],
+  providers: [JogoService,NoticiaService,RegraService,AtletaService,EstatisticaService,GetterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

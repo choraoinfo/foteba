@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
+import { GetterService } from './getter.service';
+import { Atleta } from '../entity/atleta';
 
 @Injectable()
 export class AtletaService {
 
-    constructor() { }
+    SERVICE = "atletas";
+    constructor(private getter: GetterService) { }
 
-    getAtletas() {
-        return [{ 'nome' : 'Kenneth', 'apelido' : 'Chorão'}];
+    getAtletas(): Promise<Atleta[]> {
+        return this.getter.get(this.SERVICE);
     }
-
 }

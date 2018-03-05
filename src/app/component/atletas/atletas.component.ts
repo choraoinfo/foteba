@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AtletaService } from '../../service/atleta.service';
+import { Atleta } from '../../entity/atleta';
 
 @Component({
     selector: 'app-atletas',
@@ -8,12 +9,16 @@ import { AtletaService } from '../../service/atleta.service';
 })
 export class AtletasComponent implements OnInit {
 
-    atletas : Object[];
-    
+    promiseAtletas : Promise<Atleta[]>;
+    atletas : Atleta[];
+
     constructor(private atletaService : AtletaService) { }
 
     ngOnInit() {
-        this.atletas = this.atletaService.getAtletas();
+        this.promiseAtletas = this.atletaService.getAtletas();
+        this.promiseAtletas.then(
+            atletas => this.atletas = atletas,
+            error =>  console.log(error));
     }
 
 }

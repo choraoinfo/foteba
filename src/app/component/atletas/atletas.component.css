@@ -1,0 +1,12 @@
+.card {
+    margin: 10px;    
+}
+
+.card-content {
+    padding: 5px;
+}
+
+.portrait {
+    height: 150px;
+    width: 150px;
+}

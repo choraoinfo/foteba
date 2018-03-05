@@ -1,7 +1,14 @@
 <div class="container">
+    <h3 class="section-title">Atletas</h3>
     <div class="row">
-        <ul class="collection">
-            <li class="collection-item" *ngFor="let atleta of atletas">{{ atleta.nome }}</li>
-        </ul>
+        <div class="card col  darken-1 z-depth-3" *ngFor="let atleta of atletas">
+            <div class="card-content">
+                <img class="circle portrait" src="http://foteba.modafaquers.com.br/{{atleta.avatar == 'no.image.png' && 'img/' + atleta.avatar || atleta.avatar.imagem_url }}"
+                    alt="{{ atleta.apelido }}">
+            </div>
+            <div class="card-action">
+                {{ atleta.apelido }}
+            </div>
+        </div>
     </div>
 </div>
