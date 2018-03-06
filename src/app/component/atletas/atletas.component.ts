@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AtletaService } from '../../service/atleta.service';
 import { Atleta } from '../../entity/atleta';
+import { ImageResolverService } from '../../service/image-resolver.service';
 
 @Component({
     selector: 'app-atletas',
@@ -12,7 +13,8 @@ export class AtletasComponent implements OnInit {
     promiseAtletas : Promise<Atleta[]>;
     atletas : Atleta[];
 
-    constructor(private atletaService : AtletaService) { }
+    constructor(private atletaService : AtletaService,
+                private imageResolver : ImageResolverService) { }
 
     ngOnInit() {
         this.promiseAtletas = this.atletaService.getAtletas();
@@ -21,4 +23,7 @@ export class AtletasComponent implements OnInit {
             error =>  console.log(error));
     }
 
+    getImagem(atleta){
+        return this.imageResolver.resolveImageAvatar(atleta);
+    }
 }

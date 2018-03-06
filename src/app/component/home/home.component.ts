@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JogoService } from '../../service/jogo.service';
 import { Jogo } from '../../entity/jogo';
-import { AutenticacaoServiceService } from '../../service/autenticacao-service.service';
+import { AutenticacaoService } from '../../service/autenticacao.service';
+import { ImageResolverService } from '../../service/image-resolver.service';
 
 @Component({
 	selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
     jogos : Jogo[];    
 
     constructor(private jogosService : JogoService, 
-                private autenticacaoService : AutenticacaoServiceService) {}
+                private autenticacaoService : AutenticacaoService,
+                private imagemResolver : ImageResolverService) {}
 
 	ngOnInit(): void {
         this.promiseJogos = this.jogosService.getProximosJogos();
@@ -27,4 +29,7 @@ export class HomeComponent implements OnInit {
         return this.autenticacaoService.isUsuarioLogado();
     }
 
+    getImagem(atleta){
+        return this.imagemResolver.resolveThumbnailAvatar(atleta);
+    }
 }

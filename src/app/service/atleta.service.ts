@@ -5,11 +5,16 @@ import { Atleta } from '../entity/atleta';
 @Injectable()
 export class AtletaService {
 
-    SERVICE = "atletas";
+    ALL_SERVICE = "atletas";
+    UNIQUE_SERVICE = "atleta/";
 
     constructor(private getter: GetterService) { }
 
     getAtletas(): Promise<Atleta[]> {
-        return this.getter.get(this.SERVICE);
+        return this.getter.get(this.ALL_SERVICE);
+    }
+
+    getAtleta(id): Promise<Atleta> {
+        return this.getter.get(this.UNIQUE_SERVICE + id);
     }
 }

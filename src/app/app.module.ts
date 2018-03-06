@@ -20,18 +20,31 @@ import { EstatisticaService } from './service/estatistica.service';
 import { LogadoComponent } from './component/logado/logado.component';
 import { Http, HttpModule } from '@angular/http';
 import { GetterService } from './service/getter.service';
-import { AutenticacaoServiceService } from './service/autenticacao-service.service';
+import { AutenticacaoService } from './service/autenticacao.service';
+import { StorageService } from './service/storage.service';
+import { ExtratoComponent } from './component/extrato/extrato.component';
+import { CadastroComponent } from './component/cadastro/cadastro.component';
+import { ImageResolverService } from './service/image-resolver.service';
 
 @NgModule({
-  declarations: [    
-    AppComponent, LoginComponent, MenuComponent, NoticiasComponent, HomeComponent, RegrasComponent, AtletasComponent, EstatisticasComponent, LogadoComponent
-  ],
-  imports: [
-    BrowserModule,
-    routing,
-    HttpModule
-  ],
-  providers: [JogoService,NoticiaService,RegraService,AtletaService,EstatisticaService,GetterService,AutenticacaoServiceService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent, LoginComponent, MenuComponent, NoticiasComponent, HomeComponent, RegrasComponent, AtletasComponent, EstatisticasComponent, LogadoComponent, ExtratoComponent, CadastroComponent
+    ],
+    imports: [
+        BrowserModule,
+        routing,
+        HttpModule
+    ],
+    providers: [
+        JogoService,
+        NoticiaService,
+        RegraService,
+        AtletaService,
+        EstatisticaService,
+        GetterService,
+        AutenticacaoService,
+        StorageService,
+        ImageResolverService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

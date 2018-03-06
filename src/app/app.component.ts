@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AutenticacaoServiceService } from './service/autenticacao-service.service';
+import { AutenticacaoService } from './service/autenticacao.service';
 
 @Component({
     selector: 'app-root',
@@ -9,7 +9,7 @@ import { AutenticacaoServiceService } from './service/autenticacao-service.servi
 export class AppComponent {
     title = 'app';
 
-    constructor(private autenticacaoService : AutenticacaoServiceService){}
+    constructor(private autenticacaoService : AutenticacaoService){}
 
     isLogado() {
         return this.autenticacaoService.isUsuarioLogado();
