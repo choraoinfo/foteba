@@ -2,6 +2,7 @@ import { MaterializeModule } from 'angular2-materialize';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -33,7 +34,8 @@ import { ImageResolverService } from './service/image-resolver.service';
     imports: [
         BrowserModule,
         routing,
-        HttpModule
+        HttpModule,
+        FormsModule
     ],
     providers: [
         JogoService,

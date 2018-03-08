@@ -19,6 +19,7 @@ export class CadastroComponent implements OnInit {
                 private imageResolver : ImageResolverService) { }
 
     ngOnInit() {
+        this.atleta = new Atleta;
         this.promiseAtleta = this.atletaService.getAtleta(this.autenticacaoService.getUsuarioID());
         this.promiseAtleta.then(
             atleta => this.atleta = atleta,
@@ -26,6 +27,11 @@ export class CadastroComponent implements OnInit {
     }
 
     getImage(){
-        return this.imageResolver.resolveThumbnailAvatar(this.atleta);
+        if (this.atleta.avatar)
+            return this.imageResolver.resolveThumbnailAvatar(this.atleta);
+    }
+
+    doSubmit(form){
+        console.log(form);
     }
 }
