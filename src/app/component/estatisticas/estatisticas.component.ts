@@ -13,7 +13,10 @@ export class EstatisticasComponent implements OnInit {
     constructor(private estatisticaService : EstatisticaService) { }
 
     ngOnInit() {
-        this.estatisticas = this.estatisticaService.getEstatisticas();
+        // this.estatisticas = this.estatisticaService.getEstatisticas().subscribe(
+        //     estatisticas => this.estatisticas = estatisticas,
+        //     error => console.log(error)
+        // );
     }
 
 }

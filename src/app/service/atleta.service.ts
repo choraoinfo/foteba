@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GetterService } from './getter.service';
 import { Atleta } from '../entity/atleta';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AtletaService {
@@ -10,11 +11,11 @@ export class AtletaService {
 
     constructor(private getter: GetterService) { }
 
-    getAtletas(): Promise<Atleta[]> {
+    getAtletas(): Observable<Atleta[]> {
         return this.getter.get(this.ALL_SERVICE);
     }
 
-    getAtleta(id): Promise<Atleta> {
+    getAtleta(id): Observable<Atleta> {
         return this.getter.get(this.UNIQUE_SERVICE + id);
     }
 }

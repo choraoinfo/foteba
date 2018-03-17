@@ -3,6 +3,7 @@ import { JogoService } from '../../service/jogo.service';
 import { Jogo } from '../../entity/jogo';
 import { AutenticacaoService } from '../../service/autenticacao.service';
 import { ImageResolverService } from '../../service/image-resolver.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
 	selector: 'app-home',
@@ -11,7 +12,7 @@ import { ImageResolverService } from '../../service/image-resolver.service';
 })
 export class HomeComponent implements OnInit {
 
-    promiseJogos : Promise<Jogo[]>;
+    promiseJogos : Observable<Jogo[]>;
     jogos : Jogo[];    
 
     constructor(private jogosService : JogoService, 
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
 
 	ngOnInit(): void {
         this.promiseJogos = this.jogosService.getProximosJogos();
-        this.promiseJogos.then(
+        this.promiseJogos.map(
             jogos => this.jogos = jogos,
             error =>  console.log(error));
     }

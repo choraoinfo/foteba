@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { GetterService } from './getter.service';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class JogoService {
@@ -12,7 +13,7 @@ export class JogoService {
     SERVICE = "jogos/proximos";
 	constructor(private getter : GetterService) { }
 
-    getProximosJogos() : Promise<Jogo[]> {
+    getProximosJogos() : Observable<Jogo[]> {
         return this.getter.get(this.SERVICE);
     }
 }

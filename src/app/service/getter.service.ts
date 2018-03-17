@@ -10,8 +10,7 @@ export class GetterService {
 
     get(service : string) {
         return this.http.get(this.BASE_URL + service)
-            .toPromise()
-            .then(this.extractData)
+            .map(this.extractData)
             .catch(this.handleErrorPromise);
     }
 

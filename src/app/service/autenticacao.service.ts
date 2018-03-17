@@ -10,6 +10,9 @@ export class AutenticacaoService {
     login(){
         this.storage.save("user.name","kenneth");
         this.storage.save("user.id","1");
+        var expiration = new Date();
+        expiration.setSeconds(expiration.getSeconds() + 5);
+        this.storage.save("user.timeout", expiration.getTime());
     }
 
     logout(){
@@ -18,10 +21,22 @@ export class AutenticacaoService {
     }
 
     isUsuarioLogado(){
+        if (this.isSessionExpired()){
+            this.logout()
+            return false;
+        }
         return this.getUsuarioID() != null;
     }
 
     getUsuarioID(){
         return this.storage.get("user.id");
+    }
+
+    private getExpirationTime(){
+        return this.storage.get("user.timeout");
+    }
+
+    private isSessionExpired(){        
+        return new Date().getTime() > this.getExpirationTime();
     }
 }

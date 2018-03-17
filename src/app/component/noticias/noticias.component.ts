@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoticiaService } from '../../service/noticia.service';
 import { Noticia } from '../../entity/noticia';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'app-noticias',
@@ -9,15 +10,15 @@ import { Noticia } from '../../entity/noticia';
 })
 export class NoticiasComponent implements OnInit {
 
-    promiseNoticias: Promise<Noticia[]>;
     noticias: Noticia[];
 
     constructor(private noticiaService: NoticiaService) { }
 
     ngOnInit() {
-        this.promiseNoticias = this.noticiaService.getNoticias();
-        this.promiseNoticias.then(
+        this.noticiaService.getNoticias()
+        .subscribe(
             noticias => this.noticias = noticias,
-            error => console.log(error));
+            error => console.log(error)
+        );
     }
 }

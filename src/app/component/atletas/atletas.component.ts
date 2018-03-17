@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AtletaService } from '../../service/atleta.service';
 import { Atleta } from '../../entity/atleta';
 import { ImageResolverService } from '../../service/image-resolver.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'app-atletas',
@@ -10,15 +11,13 @@ import { ImageResolverService } from '../../service/image-resolver.service';
 })
 export class AtletasComponent implements OnInit {
 
-    promiseAtletas : Promise<Atleta[]>;
     atletas : Atleta[];
 
     constructor(private atletaService : AtletaService,
                 private imageResolver : ImageResolverService) { }
 
     ngOnInit() {
-        this.promiseAtletas = this.atletaService.getAtletas();
-        this.promiseAtletas.then(
+        this.atletaService.getAtletas().subscribe(
             atletas => this.atletas = atletas,
             error =>  console.log(error));
     }
