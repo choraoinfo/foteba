@@ -6,9 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
-import { MenuComponent } from './component/menu/menu.component';
 import { NoticiasComponent } from './component/noticias/noticias.component';
-import { routing } from './app.routing';
 import { HomeComponent } from './component/home/home.component';
 import { RegrasComponent } from './component/regras/regras.component';
 import { AtletasComponent } from './component/atletas/atletas.component';
@@ -18,22 +16,26 @@ import { NoticiaService } from './service/noticia.service';
 import { RegraService } from './service/regra.service';
 import { AtletaService } from './service/atleta.service';
 import { EstatisticaService } from './service/estatistica.service';
-import { LogadoComponent } from './component/logado/logado.component';
 import { Http, HttpModule } from '@angular/http';
 import { GetterService } from './service/getter.service';
 import { AutenticacaoService } from './service/autenticacao.service';
 import { StorageService } from './service/storage.service';
-import { ExtratoComponent } from './component/extrato/extrato.component';
 import { CadastroComponent } from './component/cadastro/cadastro.component';
 import { ImageResolverService } from './service/image-resolver.service';
 
 @NgModule({
     declarations: [
-        AppComponent, LoginComponent, MenuComponent, NoticiasComponent, HomeComponent, RegrasComponent, AtletasComponent, EstatisticasComponent, LogadoComponent, ExtratoComponent, CadastroComponent
+        AppComponent, 
+        LoginComponent, 
+        NoticiasComponent,
+        HomeComponent, 
+        RegrasComponent, 
+        AtletasComponent, 
+        EstatisticasComponent, 
+        CadastroComponent
     ],
     imports: [
         BrowserModule,
-        routing,
         HttpModule,
         FormsModule
     ],

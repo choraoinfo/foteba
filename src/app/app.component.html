@@ -4,17 +4,77 @@
 {{ isLoading }}
 <div id="topo">
     <div class="container">
-        <app-menu></app-menu>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="" class="brand-logo">
+                    <img src="./assets/img/escudo.mi.png" title="Futebol" alt="Futebol" />
+                </a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li (click)="setTab('tab-home')">Home</li>
+                    <li>|</li>
+                    <li (click)="setTab('tab-news')">Not&iacute;cias</li>
+                    <li>|</li>
+                    <li (click)="setTab('tab-rules')">Regras</li>
+                    <li>|</li>
+                    <li (click)="setTab('tab-players')">Atletas</li>
+                    <li>|</li>
+                    <li (click)="setTab('tab-stats')">Estat&iacute;sticas</li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li (click)="setTab('tab-home')">Home</li>
+                    <li (click)="setTab('tab-news')">Not&iacute;cias</li>
+                    <li (click)="setTab('tab-rules')">Regras</li>
+                    <li (click)="setTab('tab-players')">Atletas</li>
+                    <li (click)="setTab('tab-stats')">Estat&iacute;sticas</li>
+                </ul>
+            </div>
+        </nav>
     </div>
 </div>
 <div id="conteudo">
-    <router-outlet></router-outlet>
+    <div id="tab-home" [hidden]="!isSelected('tab-home')">
+        <app-home></app-home>
+    </div>
+    <div id="tab-news" [hidden]="!isSelected('tab-news')">
+        <app-noticias></app-noticias>
+    </div>
+    <div id="tab-rules" [hidden]="!isSelected('tab-rules')">
+        <app-regras></app-regras>
+    </div>
+    <div id="tab-players" [hidden]="!isSelected('tab-players')">
+        <app-atletas></app-atletas>
+    </div>
+    <div id="tab-stats" [hidden]="!isSelected('tab-stats')">
+        <app-estatisticas></app-estatisticas>
+    </div>
+    <div id="cadastro" [hidden]="!isSelected('cadastro')">
+        <app-cadastro></app-cadastro>
+    </div>
+    <div id="extrato" [hidden]="!isSelected('extrato')">
+        extrato uouks
+    </div>
 </div>
 <div id="rodape">
-    <div class="container" *ngIf="!isLogado()">
+    <div class="container" [hidden]="isLogado()">
         <app-login></app-login>
     </div>
-    <div class="container" *ngIf="isLogado()">
-        <app-logado></app-logado>
+    <div class="container" [hidden]="!isLogado()">
+        <div class="row">
+            <div class="col s12 m12 l4 center" (click)="setTab('cadastro')">
+                <i class="medium material-icons grey darken-1 circle login-icon">art_track</i>
+                <p class="icon-text">Meu cadastro</p>
+            </div>
+            <div class="col s12 m12 l4 center" (click)="setTab('extrato')">
+                <i class="medium material-icons grey darken-1 circle login-icon">attach_money</i>
+                <p class="icon-text">Extrato</p>
+            </div>
+            <div class="col s12 m12 l4 center login-icon" (click)="doLogout()">
+                <i class="medium material-icons grey darken-1 circle login-icon" (click)="doLogout()">highlight_off</i>
+                <p class="icon-text">Sair</p>
+            </div>
+        </div>
     </div>
 </div>

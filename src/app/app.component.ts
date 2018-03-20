@@ -8,10 +8,24 @@ import { AutenticacaoService } from './service/autenticacao.service';
 })
 export class AppComponent {
     title = 'app';
+    selectedTab =  "tab-home";
 
     constructor(private autenticacaoService : AutenticacaoService){}
 
     isLogado() {
         return this.autenticacaoService.isUsuarioLogado();
     }
+
+    isSelected(tab){
+        return this.selectedTab == tab;
+    }
+
+    setTab(tab){
+        this.selectedTab = tab;
+    }
+
+    doLogout(){
+        this.autenticacaoService.logout();
+    }
+
 }

@@ -20,10 +20,10 @@ export class HomeComponent implements OnInit {
                 private imagemResolver : ImageResolverService) {}
 
 	ngOnInit(): void {
-        this.promiseJogos = this.jogosService.getProximosJogos();
-        this.promiseJogos.map(
+        this.jogosService.getProximosJogos().subscribe(
             jogos => this.jogos = jogos,
-            error =>  console.log(error));
+            error =>  console.log(error)
+        );
     }
     
     isUsuarioLogado(){

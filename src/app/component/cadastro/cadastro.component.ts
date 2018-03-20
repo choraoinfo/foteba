@@ -35,4 +35,8 @@ export class CadastroComponent implements OnInit {
     doSubmit(form){
         console.log(form);
     }
+
+    isLogado(){
+        return this.autenticacaoService.isUsuarioLogado();
+    }
 }

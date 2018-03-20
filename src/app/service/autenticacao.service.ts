@@ -11,7 +11,7 @@ export class AutenticacaoService {
         this.storage.save("user.name","kenneth");
         this.storage.save("user.id","1");
         var expiration = new Date();
-        expiration.setSeconds(expiration.getSeconds() + 5);
+        expiration.setSeconds(expiration.getMinutes() + 20);
         this.storage.save("user.timeout", expiration.getTime());
     }
 

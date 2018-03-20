@@ -33,3 +33,42 @@ body {
     bottom: 0px;
     display: block;
 }
+
+nav {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+nav ul a:hover {
+    background-color: #a3a3a3;
+}
+
+nav li {
+    cursor: pointer;
+    padding: 10px;
+}
+
+nav li:hover {
+    cursor: pointer;
+    background-color: #d3d3d3;
+}
+
+.logo {
+    padding-top: 10px;
+}
+
+#rodape .row {
+    padding-bottom: 30px;
+}
+
+i {
+    padding: 10px;
+}
+
+.icon-text {
+    color: #fff;
+}
+
+.login-icon {
+    cursor: pointer;
+}
