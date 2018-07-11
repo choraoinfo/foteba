@@ -1,8 +1,8 @@
 import { MaterializeModule } from 'angular2-materialize';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -22,22 +22,26 @@ import { AutenticacaoService } from './service/autenticacao.service';
 import { StorageService } from './service/storage.service';
 import { CadastroComponent } from './component/cadastro/cadastro.component';
 import { ImageResolverService } from './service/image-resolver.service';
+import { PostService } from './service/post.service';
+import { LogadoComponent } from './logado/logado/logado.component';
 
 @NgModule({
     declarations: [
-        AppComponent, 
-        LoginComponent, 
+        AppComponent,
+        LoginComponent,
         NoticiasComponent,
-        HomeComponent, 
-        RegrasComponent, 
-        AtletasComponent, 
-        EstatisticasComponent, 
-        CadastroComponent
+        HomeComponent,
+        RegrasComponent,
+        AtletasComponent,
+        EstatisticasComponent,
+        CadastroComponent,
+        LogadoComponent
     ],
     imports: [
         BrowserModule,
         HttpModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [
         JogoService,
@@ -48,7 +52,9 @@ import { ImageResolverService } from './service/image-resolver.service';
         GetterService,
         AutenticacaoService,
         StorageService,
-        ImageResolverService],
+        ImageResolverService,
+        PostService,
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

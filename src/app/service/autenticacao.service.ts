@@ -1,42 +1,44 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
+import { PostService } from './post.service';
 
 @Injectable()
 export class AutenticacaoService {
 
-    constructor(private storage : StorageService) { 
+    TOKEN_STRING = "user.token";
+    BASE_URL = "http://foteba.modafaquers.com.br/api/atleta/login";
+
+    constructor(private storage : StorageService,
+                private post : PostService) { 
     }
 
-    login(){
-        this.storage.save("user.name","kenneth");
-        this.storage.save("user.id","1");
-        var expiration = new Date();
-        expiration.setSeconds(expiration.getMinutes() + 20);
-        this.storage.save("user.timeout", expiration.getTime());
+    login(user, pass){
+        var json = JSON.stringify({ 'user': user, 'pass': pass });
+        var observable = this.post.send(this.BASE_URL, json);
+        observable.subscribe(
+            success => this.saveToken(success),
+            error => this.clear()
+        );
+        return observable;
+    }
+
+    private saveToken(token){
+        this.storage.save(this.TOKEN_STRING, token);
+    }
+
+    private clear(){
+        this.logout();
     }
 
     logout(){
-        this.storage.delete("user.name");
-        this.storage.delete("user.id");
+        this.storage.delete(this.TOKEN_STRING);
     }
 
-    isUsuarioLogado(){
-        if (this.isSessionExpired()){
-            this.logout()
-            return false;
-        }
-        return this.getUsuarioID() != null;
+    isLogged(){        
+        return this.getToken() != null;
     }
 
-    getUsuarioID(){
-        return this.storage.get("user.id");
-    }
-
-    private getExpirationTime(){
-        return this.storage.get("user.timeout");
-    }
-
-    private isSessionExpired(){        
-        return new Date().getTime() > this.getExpirationTime();
+    private getToken(){        
+        return this.storage.get(this.TOKEN_STRING);
     }
 }

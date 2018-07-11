@@ -26,10 +26,6 @@ export class HomeComponent implements OnInit {
         );
     }
     
-    isUsuarioLogado(){
-        return this.autenticacaoService.isUsuarioLogado();
-    }
-
     getImagem(atleta){
         return this.imagemResolver.resolveThumbnailAvatar(atleta);
     }

@@ -5,12 +5,6 @@
 }
 
 body {
-    margin: 0 0 0 0px;
-    background-color: #e3e3e3;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    min-height: 100vh;
 }
 
 #topo {
@@ -24,14 +18,12 @@ body {
 }
 
 #conteudo {
-	flex: 1 0 auto;
 }
 
 #rodape {
-    padding-top: 20px;
     background-color: #515151;
     bottom: 0px;
-    display: block;
+    padding-top: 20px;
 }
 
 nav {

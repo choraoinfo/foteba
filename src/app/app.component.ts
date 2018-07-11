@@ -12,10 +12,6 @@ export class AppComponent {
 
     constructor(private autenticacaoService : AutenticacaoService){}
 
-    isLogado() {
-        return this.autenticacaoService.isUsuarioLogado();
-    }
-
     isSelected(tab){
         return this.selectedTab == tab;
     }

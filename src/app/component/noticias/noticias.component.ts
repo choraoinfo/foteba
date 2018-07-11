@@ -16,9 +16,9 @@ export class NoticiasComponent implements OnInit {
 
     ngOnInit() {
         this.noticiaService.getNoticias()
-        .subscribe(
-            noticias => this.noticias = noticias,
-            error => console.log(error)
-        );
+            .subscribe(
+                noticias => this.noticias = noticias,
+                error => console.log(error)
+            );
     }
 }

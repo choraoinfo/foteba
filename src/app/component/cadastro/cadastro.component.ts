@@ -20,11 +20,13 @@ export class CadastroComponent implements OnInit {
 
     ngOnInit() {
         this.atleta = new Atleta;
+        /*
         this.atletaService.getAtleta(this.autenticacaoService.getUsuarioID())
             .subscribe(
                 atleta => this.atleta = atleta,
                 error => console.log(error)
             );
+            */
     }
 
     getImage(){
@@ -37,6 +39,6 @@ export class CadastroComponent implements OnInit {
     }
 
     isLogado(){
-        return this.autenticacaoService.isUsuarioLogado();
+        return this.autenticacaoService.isLogged();
     }
 }

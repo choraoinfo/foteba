@@ -1,16 +1,25 @@
-<div class="row">
-	<div class="col s12 m5 l2 offset-l7">
-		<input type="text" class="loginFields" name="form-login" id="form-login" />
-	</div>
-	<div class="col s12 m5 l2">
-		<input type="password" class="loginFields" name="form-senha" id="form-senha" />
-	</div>
-	<div class="col s12 m2 l1 right-align">
-		<input type="button" value="Entrar" class="loginButtons" (click)="doLogin()" />
-	</div>
-</div>
-<div class="row">
-	<div class="col s12 m12 l12 right-align">
-		<input type="button" value="Esqueci a senha" class="loginButtons" />
-	</div>
+<div class="container" *ngIf="!autenticacaoService.isLogged()">
+    <form [formGroup]="formulario">
+        <div class="row">
+            <div class="col s12 m3 l2 offset-m4 offset-l7">
+                <input type="text" class="loginFields" formControlName="user" id="user" required />
+            </div>
+            <div class="col s12 m3 l2">
+                <input type="password" class="loginFields" formControlName="pass" id="pass" required />
+            </div>
+            <div class="col s12 m2 l1 right-align">
+                <button value="Entrar" class="loginButtons" (click)="doLogin()" [disabled]="!formulario.valid">Entrar</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m2 l3 offset-m8 offset-l7">
+                <span *ngIf="errorMessage" class="errorMessage">
+                    {{ errorMessage }}
+                </span>
+            </div>
+            <div class="col s12 m2 l2 right-align">
+                <button value="Esqueci a senha" class="loginButtons">Esqueci a senha</button>
+            </div>
+        </div>
+    </form>
 </div>
