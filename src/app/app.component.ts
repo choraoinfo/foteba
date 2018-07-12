@@ -12,14 +12,6 @@ export class AppComponent {
 
     constructor(private autenticacaoService : AutenticacaoService){}
 
-    isSelected(tab){
-        return this.selectedTab == tab;
-    }
-
-    setTab(tab){
-        this.selectedTab = tab;
-    }
-
     doLogout(){
         this.autenticacaoService.logout();
     }

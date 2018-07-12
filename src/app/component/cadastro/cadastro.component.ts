@@ -19,14 +19,18 @@ export class CadastroComponent implements OnInit {
                 private imageResolver : ImageResolverService) { }
 
     ngOnInit() {
+        this.atletaService.getAtleta(this.autenticacaoService.getToken()).subscribe(
+            atleta => this.sucesso(atleta),
+            error => this.error(error));
+    }
+
+    private sucesso(atleta){
+        this.atleta = atleta;
+    }
+
+    private error(error){
+        console.log(error); 
         this.atleta = new Atleta;
-        /*
-        this.atletaService.getAtleta(this.autenticacaoService.getUsuarioID())
-            .subscribe(
-                atleta => this.atleta = atleta,
-                error => console.log(error)
-            );
-            */
     }
 
     getImage(){
@@ -36,9 +40,5 @@ export class CadastroComponent implements OnInit {
 
     doSubmit(form){
         console.log(form);
-    }
-
-    isLogado(){
-        return this.autenticacaoService.isLogged();
     }
 }

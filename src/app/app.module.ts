@@ -16,7 +16,7 @@ import { NoticiaService } from './service/noticia.service';
 import { RegraService } from './service/regra.service';
 import { AtletaService } from './service/atleta.service';
 import { EstatisticaService } from './service/estatistica.service';
-import { Http, HttpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { GetterService } from './service/getter.service';
 import { AutenticacaoService } from './service/autenticacao.service';
 import { StorageService } from './service/storage.service';
@@ -24,6 +24,8 @@ import { CadastroComponent } from './component/cadastro/cadastro.component';
 import { ImageResolverService } from './service/image-resolver.service';
 import { PostService } from './service/post.service';
 import { LogadoComponent } from './logado/logado/logado.component';
+import { RouterModule } from '@angular/router';
+import { ExtratoComponent } from './extrato/extrato/extrato.component';
 
 @NgModule({
     declarations: [
@@ -35,13 +37,22 @@ import { LogadoComponent } from './logado/logado/logado.component';
         AtletasComponent,
         EstatisticasComponent,
         CadastroComponent,
-        LogadoComponent
+        LogadoComponent,
+        ExtratoComponent
     ],
     imports: [
         BrowserModule,
         HttpModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule.forRoot([
+            { path : 'noticias', component : NoticiasComponent },
+            { path : 'regras', component : RegrasComponent },
+            { path : 'cadastro', component : CadastroComponent },
+            { path : 'atletas', component : AtletasComponent },
+            { path : 'estatisticas', component : EstatisticasComponent },
+            { path : 'extrato', component : ExtratoComponent },
+        ])
     ],
     providers: [
         JogoService,

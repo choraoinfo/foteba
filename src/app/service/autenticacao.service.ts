@@ -16,7 +16,7 @@ export class AutenticacaoService {
         var json = JSON.stringify({ 'user': user, 'pass': pass });
         var observable = this.post.send(this.BASE_URL, json);
         observable.subscribe(
-            success => this.saveToken(success),
+            success => this.saveToken(success.message),
             error => this.clear()
         );
         return observable;
@@ -38,7 +38,7 @@ export class AutenticacaoService {
         return this.getToken() != null;
     }
 
-    private getToken(){        
+    getToken(){        
         return this.storage.get(this.TOKEN_STRING);
     }
 }

@@ -12,10 +12,12 @@
 a:link, a:visited, a:active {
     text-decoration: none;
     color: #fff;
+    padding: 3px;
 }
 
 a:hover {
     color: #515151;
+    padding: 3px;
 }
 
 .errorMessage {

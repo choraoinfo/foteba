@@ -1,6 +1,3 @@
-<div id="loading" [hidden]="true">
-    <img src="./assets/img/load.gif" title="Futebol" alt="Futebol" />
-</div>
 <div id="topo">
     <div class="container">
         <nav>
@@ -12,49 +9,39 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down">
-                    <li (click)="setTab('tab-home')">Home</li>
-                    <li>|</li>
-                    <li (click)="setTab('tab-news')">Not&iacute;cias</li>
-                    <li>|</li>
-                    <li (click)="setTab('tab-rules')">Regras</li>
-                    <li>|</li>
-                    <li (click)="setTab('tab-players')">Atletas</li>
-                    <li>|</li>
-                    <li (click)="setTab('tab-stats')">Estat&iacute;sticas</li>
+                    <li>
+                        <a routerLink="noticias">Not&iacute;cias</a>
+                    </li>
+                    <li>
+                        <a routerLink="regras">Regras</a>
+                    </li>
+                    <li>
+                        <a routerLink="atletas">Atletas</a>
+                    </li>
+                    <li>
+                        <a routerLink="estatisticas">Estat&iacute;sticas</a>
+                    </li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
-                    <li (click)="setTab('tab-home')">Home</li>
-                    <li (click)="setTab('tab-news')">Not&iacute;cias</li>
-                    <li (click)="setTab('tab-rules')">Regras</li>
-                    <li (click)="setTab('tab-players')">Atletas</li>
-                    <li (click)="setTab('tab-stats')">Estat&iacute;sticas</li>
+                    <li>
+                        <a routerLink="noticias">Not&iacute;cias</a>
+                    </li>
+                    <li>
+                        <a routerLink="regras">Regras</a>
+                    </li>
+                    <li>
+                        <a routerLink="atletas">Atletas</a>
+                    </li>
+                    <li>
+                        <a routerLink="estatisticas">Estat&iacute;sticas</a>
+                    </li>
                 </ul>
             </div>
         </nav>
     </div>
 </div>
 <div id="conteudo">
-    <div id="tab-home" [hidden]="!isSelected('tab-home')">
-        <app-home></app-home>
-    </div>
-    <div id="tab-news" [hidden]="!isSelected('tab-news')">
-        <app-noticias></app-noticias>
-    </div>
-    <div id="tab-rules" [hidden]="!isSelected('tab-rules')">
-        <app-regras></app-regras>
-    </div>
-    <div id="tab-players" [hidden]="!isSelected('tab-players')">
-        <app-atletas></app-atletas>
-    </div>
-    <div id="tab-stats" [hidden]="!isSelected('tab-stats')">
-        <app-estatisticas></app-estatisticas>
-    </div>
-    <div id="cadastro" [hidden]="!isSelected('cadastro')">
-        <app-cadastro></app-cadastro>
-    </div>
-    <div id="extrato" [hidden]="!isSelected('extrato')">
-        extrato uouks
-    </div>
+    <router-outlet></router-outlet>
 </div>
 <div id="rodape">
     <app-login></app-login>
