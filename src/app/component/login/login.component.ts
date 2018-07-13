@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
     doLogin(){        
         let pass = Md5.hashStr(this.formulario.value.pass);
         let user = this.formulario.value.user;
-        console.log(pass);
         this.autenticacaoService.login(user, pass).subscribe(
             result => this.processResponse(result),
             error => this.errorMessage = error);

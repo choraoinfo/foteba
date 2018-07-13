@@ -7,12 +7,13 @@ import { Headers } from '@angular/http'
 export class PostService {
 
     constructor(private http: Http) { }
+    BASE_URL = "http://foteba.modafaquers.com.br/api/";
 
-    send(base_url, json) {
+    send(service_url, json) {
         var params = json;
         var cabe = new Headers();
         cabe.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this.http.post(base_url,
+        return this.http.post(this.BASE_URL + service_url,
             params, {
                 headers: cabe
             })

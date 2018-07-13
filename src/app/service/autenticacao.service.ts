@@ -6,7 +6,7 @@ import { PostService } from './post.service';
 export class AutenticacaoService {
 
     TOKEN_STRING = "user.token";
-    BASE_URL = "http://foteba.modafaquers.com.br/api/atleta/login";
+    SERVICE_URL = "atleta/login";
 
     constructor(private storage : StorageService,
                 private post : PostService) { 
@@ -14,7 +14,7 @@ export class AutenticacaoService {
 
     login(user, pass){
         var json = JSON.stringify({ 'user': user, 'pass': pass });
-        var observable = this.post.send(this.BASE_URL, json);
+        var observable = this.post.send(this.SERVICE_URL, json);
         observable.subscribe(
             success => this.saveToken(success.message),
             error => this.clear()

@@ -4,6 +4,7 @@ export class Atleta {
     apelido: string;
     ativo: number;
     login: string;
+    senha: string;
     goleiro_fixo: number;
     machucado: number;
     avatar: {

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
     styleUrls: ['./regras.component.css']
 })
 export class RegrasComponent implements OnInit {
-
+    
     regras: Regra[];
 
     constructor(private regraService: RegraService) { }

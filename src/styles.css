@@ -29,6 +29,6 @@ a:hover {
     border-radius: 2px;
 }
 
-.row {
-    margin-bottom: 0px;
+#loading {
+    text-align: center;
 }
