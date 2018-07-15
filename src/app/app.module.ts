@@ -1,7 +1,5 @@
-import { MaterializeModule } from 'angular2-materialize';
-
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -26,6 +24,7 @@ import { PostService } from './service/post.service';
 import { LogadoComponent } from './logado/logado/logado.component';
 import { RouterModule } from '@angular/router';
 import { ExtratoComponent } from './extrato/extrato/extrato.component';
+import { LoadingComponent } from './loading/loading/loading.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +37,8 @@ import { ExtratoComponent } from './extrato/extrato/extrato.component';
         EstatisticasComponent,
         CadastroComponent,
         LogadoComponent,
-        ExtratoComponent
+        ExtratoComponent,
+        LoadingComponent
     ],
     imports: [
         BrowserModule,
@@ -64,7 +64,7 @@ import { ExtratoComponent } from './extrato/extrato/extrato.component';
         AutenticacaoService,
         StorageService,
         ImageResolverService,
-        PostService,
+        PostService
     ],
     bootstrap: [AppComponent]
 })

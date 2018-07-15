@@ -4,9 +4,6 @@
     }
 }
 
-body {
-}
-
 #topo {
     background-color: #515151;
     height: 70px;
@@ -15,9 +12,6 @@ body {
 
 #topo .col {
     text-align: center;
-}
-
-#conteudo {
 }
 
 #rodape {

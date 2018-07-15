@@ -3,7 +3,6 @@ import { Atleta } from '../../entity/atleta';
 import { AtletaService } from '../../service/atleta.service';
 import { AutenticacaoService } from '../../service/autenticacao.service';
 import { ImageResolverService } from '../../service/image-resolver.service';
-import {Observable} from 'rxjs/Observable';
 import { PostService } from '../../service/post.service';
 
 @Component({

@@ -11,18 +11,18 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AtletasComponent implements OnInit {
 
-    atletas : Atleta[];
+    atletas: Atleta[];
 
-    constructor(private atletaService : AtletaService,
-                private imageResolver : ImageResolverService) { }
+    constructor(private atletaService: AtletaService,
+        private imageResolver: ImageResolverService) { }
 
     ngOnInit() {
         this.atletaService.getAtletas().subscribe(
             atletas => this.atletas = atletas,
-            error =>  console.log(error));
+            error => console.log(error));
     }
 
-    getImagem(atleta){
+    getImagem(atleta) {
         return this.imageResolver.resolveImageAvatar(atleta);
     }
 }

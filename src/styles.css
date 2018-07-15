@@ -32,3 +32,9 @@ a:hover {
 #loading {
     text-align: center;
 }
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}

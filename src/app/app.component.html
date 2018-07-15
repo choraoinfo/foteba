@@ -1,4 +1,5 @@
-<div id="topo">
+<app-loading></app-loading>
+<header id="topo">
     <div class="container">
         <nav>
             <div class="nav-wrapper">
@@ -9,41 +10,25 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a routerLink="noticias">Not&iacute;cias</a>
-                    </li>
-                    <li>
-                        <a routerLink="regras">Regras</a>
-                    </li>
-                    <li>
-                        <a routerLink="atletas">Atletas</a>
-                    </li>
-                    <li>
-                        <a routerLink="estatisticas">Estat&iacute;sticas</a>
-                    </li>
+                    <li><a routerLink="noticias">Not&iacute;cias</a></li>
+                    <li><a routerLink="regras">Regras</a></li>
+                    <li><a routerLink="atletas">Atletas</a></li>
+                    <li><a routerLink="estatisticas">Estat&iacute;sticas</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
-                    <li>
-                        <a routerLink="noticias">Not&iacute;cias</a>
-                    </li>
-                    <li>
-                        <a routerLink="regras">Regras</a>
-                    </li>
-                    <li>
-                        <a routerLink="atletas">Atletas</a>
-                    </li>
-                    <li>
-                        <a routerLink="estatisticas">Estat&iacute;sticas</a>
-                    </li>
+                    <li><a routerLink="noticias">Not&iacute;cias</a></li>
+                    <li><a routerLink="regras">Regras</a></li>
+                    <li><a routerLink="atletas">Atletas</a></li>
+                    <li><a routerLink="estatisticas">Estat&iacute;sticas</a></li>
                 </ul>
             </div>
         </nav>
     </div>
-</div>
-<div id="conteudo">
+</header>
+<article id="conteudo">
     <router-outlet></router-outlet>
-</div>
-<div id="rodape">
+</article>
+<footer id="rodape">
     <app-login></app-login>
     <app-logado></app-logado>
-</div>
+</footer>

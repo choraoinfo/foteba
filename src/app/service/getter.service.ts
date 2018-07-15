@@ -1,32 +1,54 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import "rxjs/add/operator/delay";
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from '../../../node_modules/rxjs/Observable';
 
 @Injectable()
 export class GetterService {
 
-    BASE_URL = "http://foteba.modafaquers.com.br/api/";
-    
-    constructor(private http: Http) { }
+    private loading = false;
+    private observableLoading: BehaviorSubject<boolean>;
 
-    get(service : string) {
-        return this.http.get(this.BASE_URL + service)
-            .map(this.extractData)
-            // .delay(10000)
-            .catch(this.handleErrorPromise);
+    BASE_URL = "http://foteba.modafaquers.com.br/api/";
+
+    constructor(private http: Http) {
+        this.observableLoading = new BehaviorSubject<boolean>(this.loading);
     }
 
-	private extractData(response: Response) {
+    get(service: string) {
+        this.loadingOn();
+        let obs = this.http.get(this.BASE_URL + service).map(this.extractData).delay(1000);
+        obs.subscribe(
+            () => this.loadingOff() , () => this.loadingOff()
+        );
+        return obs;
+    }
+
+    private extractData(response) {
         var body = response.json();
         if (body.error === true)
             throw body.message;
-        
+
         return body;
-    }   
+    }
 
-    private handleErrorPromise (error: Response | any) {
-		console.error(error.message || error);
-		return Promise.reject(error.message || error);
-    }	
+    private handleErrorPromise(error) {
+        console.error(error.message || error);
+        return Promise.reject(error.message || error);
+    }
 
+    private loadingOn() {
+        this.loading = true;
+        this.observableLoading.next(this.loading);
+    }
+
+    private loadingOff() {
+        this.loading = false;
+        this.observableLoading.next(this.loading);
+    }
+
+    public getLoadingWatcher() {
+        return this.observableLoading;
+    }
 }
