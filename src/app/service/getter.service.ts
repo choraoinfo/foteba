@@ -33,11 +33,6 @@ export class GetterService {
         return body;
     }
 
-    private handleErrorPromise(error) {
-        console.error(error.message || error);
-        return Promise.reject(error.message || error);
-    }
-
     private loadingOn() {
         this.loading = true;
         this.observableLoading.next(this.loading);

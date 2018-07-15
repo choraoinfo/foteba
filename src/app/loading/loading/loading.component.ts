@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GetterService } from '../../service/getter.service';
 import { Subscription } from 'rxjs/Subscription';
+import { PostService } from '../../service/post.service';
 
 @Component({
     selector: 'app-loading',
@@ -9,13 +10,22 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class LoadingComponent implements OnInit {
 
-    shouldShow = false;
-    private watcher: Subscription;
+    private getLoading = false;
+    private postLoading = false;
+    private getWatcher: Subscription;
+    private postWatcher: Subscription;
 
-    constructor(private getterService: GetterService) { }
+    constructor(private getterService: GetterService,
+        private postService: PostService) { }
 
     ngOnInit() {
-        this.watcher = this.getterService.getLoadingWatcher().subscribe(
-            visible => this.shouldShow = visible);
+        this.getWatcher = this.getterService.getLoadingWatcher().subscribe(
+            visible => this.getLoading = visible);
+        this.postWatcher = this.postService.getLoadingWatcher().subscribe(
+            visible => this.postLoading = visible);
+    }
+
+    isLoading() {
+        return this.getLoading || this.postLoading;
     }
 }
