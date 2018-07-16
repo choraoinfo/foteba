@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AutenticacaoService } from '../../service/autenticacao.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import {Md5} from 'ts-md5/dist/md5';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
     selector: 'app-login',
@@ -11,11 +11,11 @@ import {Md5} from 'ts-md5/dist/md5';
 export class LoginComponent implements OnInit {
 
     @Input()
-    formulario : FormGroup;
+    formulario: FormGroup;
     errorMessage;
 
-    constructor(private autenticacaoService : AutenticacaoService,
-                private formBuilder : FormBuilder) { }
+    constructor(private autenticacaoService: AutenticacaoService,
+        private formBuilder: FormBuilder) { }
 
     ngOnInit() {
         this.formulario = this.formBuilder.group({
@@ -24,14 +24,22 @@ export class LoginComponent implements OnInit {
         })
     }
 
-    doLogin(){        
+    doLogin() {
         let pass = Md5.hashStr(this.formulario.value.pass);
         let user = this.formulario.value.user;
         this.autenticacaoService.login(user, pass).subscribe(
             result => this.processResponse(result),
-            error => this.errorMessage = error);
+            error => this.processError(error));
     }
 
-    private processResponse(result){
+    private processError(error) {
+        this.errorMessage = error.message;
+    }
+
+    private processResponse(result) {
+    }
+
+    isLogado() {
+        return this.autenticacaoService.isLogged();
     }
 }

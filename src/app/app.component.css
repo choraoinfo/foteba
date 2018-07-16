@@ -1,12 +1,12 @@
 @media all and (max-width: 1000px){
-    #conteudo {
-        margin-top: 80px;
+    #user-access {
+        margin-top: 100px;
+        position: relative;
     }
 }
 
 #topo {
     background-color: #515151;
-    height: 70px;
     color: #e18109;
 }
 
@@ -14,10 +14,9 @@
     text-align: center;
 }
 
-#rodape {
+#user-access {
     background-color: #515151;
-    bottom: 0px;
-    padding-top: 20px;
+    text-align: right;
 }
 
 nav {
@@ -25,26 +24,8 @@ nav {
     box-shadow: none;
 }
 
-nav ul a:hover {
-    background-color: #a3a3a3;
-}
-
-nav li {
-    cursor: pointer;
-    padding: 10px;
-}
-
-nav li:hover {
-    cursor: pointer;
-    background-color: #d3d3d3;
-}
-
 .logo {
     padding-top: 10px;
-}
-
-#rodape .row {
-    padding-bottom: 30px;
 }
 
 i {
@@ -57,4 +38,21 @@ i {
 
 .login-icon {
     cursor: pointer;
+}
+
+a.menu:link, a.menu:visited, a.menu:active {
+    text-decoration: none;
+    color: #fff;
+    padding: 3px;
+    line-height: 20px;
+    margin: 10px;
+    padding: 5px;
+}
+
+a.menu:hover {
+    padding: 3px;
+    line-height: 20px;
+    margin: 10px;
+    padding: 5px;
+    background-color: #d3d3d3;
 }

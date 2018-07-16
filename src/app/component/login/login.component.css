@@ -1,6 +1,5 @@
 .loginButtons {
     background-color: #515151;
-    color: #e18109;
     border: 0px;
     padding: 10px;
 }
@@ -9,4 +8,9 @@
     margin: 5px !important;
     padding: 5px !important;
     height: auto  !important;   
+}
+
+.login-icon {
+    padding: 5px;    
+    cursor: pointer;
 }

@@ -1,3 +1,9 @@
+@media all and (min-width : 600px) and (max-width: 1300px){
+    .avatar {
+        width: 150px;
+    }
+}
+
 .avatar {
     box-shadow: 5px 5px 3px #999;
     border-radius: 5px;

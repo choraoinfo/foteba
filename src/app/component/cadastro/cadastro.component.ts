@@ -12,55 +12,47 @@ import { PostService } from '../../service/post.service';
 })
 export class CadastroComponent implements OnInit {
 
-    atleta : Atleta;
+    atleta: Atleta;
     senha: string;
-    confirmar_senha : string;
-    salvando: boolean;
+    confirmar_senha: string;
     mensagem: string;
-    
+
     constructor(private atletaService: AtletaService,
-                private autenticacaoService: AutenticacaoService,
-                private imageResolver : ImageResolverService,
-                private post : PostService) { }
+        private autenticacaoService: AutenticacaoService,
+        private imageResolver: ImageResolverService,
+        private post: PostService) { }
 
     ngOnInit() {
-        this.savingOn();
         this.atletaService.getAtleta(this.autenticacaoService.getToken()).subscribe(
             atleta => this.sucesso(atleta),
             error => this.process(error));
-        this.salvando = false;
     }
 
-    private sucesso(atleta){
+    private sucesso(atleta) {
         this.atleta = atleta;
     }
 
-    getImage(){
+    getImage() {
         if (this.atleta.avatar)
             return this.imageResolver.resolveImageAvatar(this.atleta);
     }
 
-    doSubmit(form){
+    doSubmit(form) {
         this.mensagem = "";
         if (form.valid)
-            this.savingOn();
-            this.post.send("atleta/cadastro",form.value)
-            .subscribe(
-               success => this.process(success.message),
-               error => this.process(error)
-            );
+            this.post.send("atleta/cadastro", form.value)
+                .subscribe(
+                    success => this.process(success.message),
+                    error => this.process(error)
+                );
     }
 
-    private process(message){
+    private process(message) {
         this.mensagem = message;
-        this.savingOff();
     }
 
-    private savingOff(){
-        this.salvando = false;
+    isLogado() {
+        return this.autenticacaoService.isLogged();
     }
 
-    private savingOn(){
-        this.salvando = true;
-    }
 }

@@ -33,7 +33,7 @@ export class PostService {
         this.isLoading = false;
         this.observableLoading.next(this.isLoading);
         if (body.error === true)
-            throw body.message;
+            throw body;
                 
         return body;        
     }
