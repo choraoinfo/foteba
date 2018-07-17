@@ -15,7 +15,8 @@ export class CadastroComponent implements OnInit {
     atleta: Atleta;
     senha: string;
     confirmar_senha: string;
-    mensagem: string;
+    mensagemErro: string;
+    mensagemSucesso: string;
 
     constructor(private atletaService: AtletaService,
         private autenticacaoService: AutenticacaoService,
@@ -25,7 +26,7 @@ export class CadastroComponent implements OnInit {
     ngOnInit() {
         this.atletaService.getAtleta(this.autenticacaoService.getToken()).subscribe(
             atleta => this.sucesso(atleta),
-            error => this.process(error));
+            error => this.mensagemErro = error.message);
     }
 
     private sucesso(atleta) {
@@ -38,17 +39,14 @@ export class CadastroComponent implements OnInit {
     }
 
     doSubmit(form) {
-        this.mensagem = "";
+        this.mensagemErro = "";
+        this.mensagemSucesso = "";
         if (form.valid)
             this.post.send("atleta/cadastro", form.value)
                 .subscribe(
-                    success => this.process(success.message),
-                    error => this.process(error)
+                    success => this.mensagemSucesso = success.message,
+                    error => this.mensagemErro = error.mensagem
                 );
-    }
-
-    private process(message) {
-        this.mensagem = message;
     }
 
     isLogado() {

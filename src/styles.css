@@ -29,6 +29,15 @@ a:hover {
     border-radius: 2px;
 }
 
+.sucessMessage {
+    background-color: darkgreen;
+    color: #fff;
+    padding: 5px;
+    width: 100%;
+    margin: 5px;
+    border-radius: 2px;
+}
+
 #loading {
     text-align: center;
 }

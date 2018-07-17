@@ -46,6 +46,8 @@ import { LoadingComponent } from './loading/loading/loading.component';
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forRoot([
+            { path : '', component : HomeComponent },
+            { path : 'foteba3', component : HomeComponent },
             { path : 'noticias', component : NoticiasComponent },
             { path : 'regras', component : RegrasComponent },
             { path : 'cadastro', component : CadastroComponent },
