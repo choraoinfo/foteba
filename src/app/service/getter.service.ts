@@ -42,6 +42,8 @@ export class GetterService {
     private loadingOn() {
         this.loading = true;
         this.observableLoading.next(this.loading);
+        this.message = "";
+        this.observableError.next(this.message);
     }
 
     private loadingOff() {

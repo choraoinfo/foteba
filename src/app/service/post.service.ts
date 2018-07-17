@@ -20,6 +20,8 @@ export class PostService {
 
     send(service_url, json) {
         this.isLoading = true;
+        this.message = "";
+        this.observableError.next(this.message);
         this.observableLoading.next(this.isLoading);
         var params = json;
         var cabe = new Headers();
@@ -35,12 +37,13 @@ export class PostService {
         var body = response.json();
         this.isLoading = false;
         this.observableLoading.next(this.isLoading);
+        this.message = body.message;
+        this.observableError.next(this.message);
+    
         if (body.error === true){
-            this.message = body.message;
-            this.observableError.next(this.message);
             throw body;
         }
-                
+            
         return body;        
     }
 

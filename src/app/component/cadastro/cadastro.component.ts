@@ -44,9 +44,17 @@ export class CadastroComponent implements OnInit {
         if (form.valid)
             this.post.send("atleta/cadastro", form.value)
                 .subscribe(
-                    success => this.mensagemSucesso = success.message,
-                    error => this.mensagemErro = error.mensagem
+                    success => this.processSuccess(success),
+                    error => this.processError(error)
                 );
+    }
+
+    private processSuccess(success){
+        // this.mensagemSucesso = success.message;        
+    }
+
+    private processError(error){
+        // this.mensagemErro = error.message;        
     }
 
     isLogado() {

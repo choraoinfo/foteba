@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     }
 
     private processError(error) {
-        this.errorMessage = error.message;
+        // this.errorMessage = error.message;
     }
 
     private processResponse(result) {
