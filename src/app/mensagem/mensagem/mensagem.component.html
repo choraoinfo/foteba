@@ -1,0 +1,6 @@
+<div class="toast" *ngIf="showMessage()">
+    {{ getGetMessage() }}
+    {{ getPostMessage() }}
+
+    <button class="dismiss" (click)="dismiss()">Fechar</button>
+</div>

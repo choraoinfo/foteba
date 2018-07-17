@@ -9,11 +9,14 @@ export class GetterService {
 
     private loading = false;
     private observableLoading: BehaviorSubject<boolean>;
+    private message: string;
+    private observableError: BehaviorSubject<string>;
 
     BASE_URL = "http://foteba.modafaquers.com.br/api/";
 
     constructor(private http: Http) {
         this.observableLoading = new BehaviorSubject<boolean>(this.loading);
+        this.observableError = new BehaviorSubject<string>(this.message);
     }
 
     get(service: string) {
@@ -27,8 +30,11 @@ export class GetterService {
 
     private extractData(response) {
         var body = response.json();
-        if (body.error === true)
+        if (body.error === true){
+            this.message = body.message;
+            this.observableError.next(this.message);
             throw body.message;
+        }
 
         return body;
     }
@@ -45,5 +51,9 @@ export class GetterService {
 
     public getLoadingWatcher() {
         return this.observableLoading;
+    }
+
+    public getErrorWatcher() {
+        return this.observableError;
     }
 }

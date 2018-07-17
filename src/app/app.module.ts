@@ -25,6 +25,7 @@ import { LogadoComponent } from './logado/logado/logado.component';
 import { RouterModule } from '@angular/router';
 import { ExtratoComponent } from './extrato/extrato/extrato.component';
 import { LoadingComponent } from './loading/loading/loading.component';
+import { MensagemComponent } from './mensagem/mensagem/mensagem.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { LoadingComponent } from './loading/loading/loading.component';
         CadastroComponent,
         LogadoComponent,
         ExtratoComponent,
-        LoadingComponent
+        LoadingComponent,
+        MensagemComponent
     ],
     imports: [
         BrowserModule,

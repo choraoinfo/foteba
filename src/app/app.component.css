@@ -56,3 +56,12 @@ a.menu:hover {
     padding: 5px;
     background-color: #d3d3d3;
 }
+
+footer {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+}

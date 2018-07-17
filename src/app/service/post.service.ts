@@ -10,9 +10,12 @@ export class PostService {
     BASE_URL = "http://foteba.modafaquers.com.br/api/";
     private isLoading = false;
     private observableLoading: BehaviorSubject<boolean>;
+    private message: string;
+    private observableError: BehaviorSubject<string>;
 
     constructor(private http: Http) { 
         this.observableLoading = new BehaviorSubject<boolean>(this.isLoading);
+        this.observableError = new BehaviorSubject<string>(this.message);
     }
 
     send(service_url, json) {
@@ -32,13 +35,20 @@ export class PostService {
         var body = response.json();
         this.isLoading = false;
         this.observableLoading.next(this.isLoading);
-        if (body.error === true)
+        if (body.error === true){
+            this.message = body.message;
+            this.observableError.next(this.message);
             throw body;
+        }
                 
         return body;        
     }
 
     public getLoadingWatcher() {
         return this.observableLoading;
+    }
+
+    public getErrorWatcher() {
+        return this.observableError;
     }
 }

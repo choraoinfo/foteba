@@ -1,0 +1,12 @@
+.toast {
+    height: 90px;
+    margin-bottom: 20px;
+    min-height: auto;
+}
+
+.dismiss {
+    margin-left: 20px;
+    color: lightsalmon;
+    background-color: transparent;
+    border: 0px;
+}
