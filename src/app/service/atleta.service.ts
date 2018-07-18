@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { GetterService } from './getter.service';
 import { Atleta } from '../entity/atleta';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AtletaService {

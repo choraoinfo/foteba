@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../service/post.service';
-import { GetterService } from '../../service/getter.service';
 import { Subscription } from '../../../../node_modules/rxjs/Subscription';
+import { GetterService } from '../../service/getter.service';
+import { PostService } from '../../service/post.service';
 
 @Component({
     selector: 'app-mensagem',

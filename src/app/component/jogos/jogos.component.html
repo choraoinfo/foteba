@@ -8,8 +8,8 @@
             <div class="card-title">{{ jogo.inicio }} - {{ jogo.local.nome }} - {{ jogo.confirmados.length }} confirmados</div>
             <div class="row">
                 <div class="col s4 m2 l2 center" *ngFor="let confirmado of jogo.confirmados">
-                    <img src="{{ getImagem(confirmado.atleta) }}"
-                        class="circle" width="70px" height="70px" title="{{ confirmado.atleta.apelido }} " />
+                    <img src="{{ getImagem(confirmado.atleta) }}" class="circle" width="70px" height="70px" title="{{ confirmado.atleta.apelido }} "
+                    />
                 </div>
             </div>
         </div>

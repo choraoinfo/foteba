@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AtletaService } from '../../service/atleta.service';
 import { Atleta } from '../../entity/atleta';
 import { ImageResolverService } from '../../service/image-resolver.service';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'app-atletas',

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GetterService } from '../../service/getter.service';
 import { Lancamento } from '../../entity/lancamento';
-import { Observable } from 'rxjs/Observable';
-import { AutenticacaoService } from '../../service/autenticacao.service';
 import { ExtratoService } from '../../service/extrato.service';
+import { AutenticacaoService } from '../../service/autenticacao.service';
 
 @Component({
     selector: 'app-extrato',
@@ -23,5 +21,4 @@ export class ExtratoComponent implements OnInit {
             lctos => this.lancamentos = lctos,
             error => console.log(error));
     }
-
 }
