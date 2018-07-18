@@ -1,3 +1,9 @@
-<p>
-  extrato works!
-</p>
+<div class="container">
+    <h3 class="section-title">Extrato</h3>
+    <div class="row" *ngFor="let lancamento of lancamentos">
+        <div class="col s12 m4 l4">{{ lancamento.created_at }}</div>
+        <div class="col s12 m4 l4">{{ lancamento.motivo.descricao }}</div>
+        <div [ngClass]="{'col':true, 's12':true, 'm4':true, 'l4':true, 'red' : lancamento.valor < 0,'green' : lancamento.valor >= 0}">
+            {{ lancamento.valor }}</div>
+    </div>
+</div> 

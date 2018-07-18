@@ -26,6 +26,7 @@ import { RouterModule } from '@angular/router';
 import { ExtratoComponent } from './extrato/extrato/extrato.component';
 import { LoadingComponent } from './loading/loading/loading.component';
 import { MensagemComponent } from './mensagem/mensagem/mensagem.component';
+import { ExtratoService } from './service/extrato.service';
 
 @NgModule({
     declarations: [
@@ -68,7 +69,8 @@ import { MensagemComponent } from './mensagem/mensagem/mensagem.component';
         AutenticacaoService,
         StorageService,
         ImageResolverService,
-        PostService
+        PostService,
+        ExtratoService
     ],
     bootstrap: [AppComponent]
 })
