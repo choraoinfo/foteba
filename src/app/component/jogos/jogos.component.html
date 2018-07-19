@@ -6,9 +6,9 @@
             <i class="small material-icons orange darken-1 confirmacao" *ngIf="estaConfirmado(jogo)" title="Balaniar">spa</i>
 
             <div class="right">
-                <i class="small material-icons red darken-1 confirmacao" *ngIf="status(jogo) == 1" title="Jogo cancelado">cancel</i>
-                <i class="small material-icons amber darken-2 confirmacao" *ngIf="status(jogo) == 2" title="Jogo ainda não confirmado">error_outline</i>
-                <i class="small material-icons green darken-1 confirmacao" *ngIf="status(jogo) == 0" title="Jogo confirmado">check_circle</i>
+                <p class="red darken-1 confirmacao" *ngIf="status(jogo) == 1">Jogo cancelado</p>
+                <p class="amber darken-2 confirmacao" *ngIf="status(jogo) == 2">Jogo ainda não confirmado</p>
+                <p class="green darken-1 confirmacao" *ngIf="status(jogo) == 0">Jogo confirmado</p>
             </div>
             <div class="card-title">{{ jogo.inicio }} - {{ jogo.local.nome }} - {{ jogo.confirmados.length }} confirmados</div>            
             <div class="row">
