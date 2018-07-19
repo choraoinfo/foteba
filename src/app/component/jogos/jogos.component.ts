@@ -32,10 +32,13 @@ export class JogosComponent implements OnInit {
             config => this.configuracao = config,
             error => console.log(error)
         )
-        this.atletaService.getAtleta(this.autenticacaoService.getToken()).subscribe(
-            atleta => this.atleta = atleta,
-            error => console.log(error)
-        );
+        if (this.autenticacaoService.isLogged())
+            this.atletaService.getAtleta(this.autenticacaoService.getToken()).subscribe(
+                atleta => {
+                    this.atleta = atleta
+                },
+                error => console.log(error)
+            );
 
         this.jogosService.getProximosJogos().subscribe(
             jogos => this.jogos = jogos,

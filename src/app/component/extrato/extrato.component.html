@@ -1,9 +1,18 @@
 <div class="container">
     <h3 class="section-title">Extrato</h3>
-    <div class="row" *ngFor="let lancamento of lancamentos">
-        <div class="col s12 m4 l4">{{ lancamento.created_at }}</div>
-        <div class="col s12 m4 l4">{{ lancamento.motivo.descricao }}</div>
-        <div [ngClass]="{'col':true, 's12':true, 'm4':true, 'l4':true, 'red' : lancamento.valor < 0,'green' : lancamento.valor >= 0}">
-            {{ lancamento.valor }}</div>
+    <div class="centered-content">
+        <div class="saldo">
+            <p>Saldo</p>
+            {{ extrato.saldo }}
+        </div>
+        <div class="extrato">
+            <div *ngFor="let lancamento of extrato.lancamentos">
+                <div class="row" [ngClass]="{'entry' : true,'red lighten-3' : lancamento.valor < 0,'teal lighten-4' : lancamento.valor >= 0}">
+                    <div class="col s12 m4 l5">{{ lancamento.created_at }}</div>
+                    <div class="col s12 m4 l5">{{ lancamento.motivo.descricao }}</div>
+                    <div class="col s12 m4 l2">{{ lancamento.valor }}</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div> 

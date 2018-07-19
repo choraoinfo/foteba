@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { GetterService } from './getter.service';
-import { Lancamento } from '../entity/lancamento';
+import { Extrato } from '../entity/extrato';
 
 @Injectable()
 export class ExtratoService {
@@ -10,7 +10,7 @@ export class ExtratoService {
 
     constructor(private getter: GetterService) { };
 
-    getLancamentos(token: string): Observable<Lancamento[]> {
+    getExtrato(token: string): Observable<Extrato> {
         return this.getter.get(this.EXTRATO_SERVICE + token);
     }
 

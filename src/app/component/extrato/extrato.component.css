@@ -1,9 +1,16 @@
-.red {
-    color: red;
-    background-color: transparent !important;
+.entry {
+    padding : 10px;
+    margin-bottom: 5px;
 }
 
-.green {
-    color: green;
-    background-color: transparent !important;
+.centered-content {
+    grid-template-columns: repeat(auto-fill, 40%);
+}
+
+.saldo p {
+    font-size: 25pt;
+}
+
+.saldo {
+    font-size: 40pt;
 }
