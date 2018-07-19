@@ -27,6 +27,7 @@ import { LogadoComponent } from './component/logado/logado.component';
 import { ExtratoComponent } from './component/extrato/extrato.component';
 import { LoadingComponent } from './component/loading/loading.component';
 import { MensagemComponent } from './component/mensagem/mensagem.component';
+import { ConfiguracaoService } from './service/configuracao.service';
 
 @NgModule({
     declarations: [
@@ -69,7 +70,8 @@ import { MensagemComponent } from './component/mensagem/mensagem.component';
         StorageService,
         ImageResolverService,
         PostService,
-        ExtratoService
+        ExtratoService,
+        ConfiguracaoService
     ],
     bootstrap: [AppComponent]
 })

@@ -1,4 +1,6 @@
-.jogo-status {
-    margin-top: -45px;
-    margin-right: -45px;
+.confirmacao {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px outset #000;
+    cursor: pointer;
 }

@@ -1,11 +1,16 @@
-<div class="container">
+<div class="container" *ngIf="podeRenderizar()">
     <h3 class="section-title">Pr&oacute;ximos jogos</h3>
     <div class="card blue-grey darken-1 z-depth-5" *ngFor="let jogo of jogos">
         <div class="card-content white-text">
-            <div class="right jogo-status">
-                <i class="medium material-icons green darken-1 circle">done</i>
+            <i class="small material-icons green darken-1 confirmacao" *ngIf="podeConfirmar(jogo)" title="Confirmar">person_add</i>            
+            <i class="small material-icons orange darken-1 confirmacao" *ngIf="estaConfirmado(jogo)" title="Balaniar">spa</i>
+
+            <div class="right">
+                <i class="small material-icons red darken-1 confirmacao" *ngIf="status(jogo) == 1" title="Jogo cancelado">cancel</i>
+                <i class="small material-icons amber darken-2 confirmacao" *ngIf="status(jogo) == 2" title="Jogo ainda não confirmado">error_outline</i>
+                <i class="small material-icons green darken-1 confirmacao" *ngIf="status(jogo) == 0" title="Jogo confirmado">check_circle</i>
             </div>
-            <div class="card-title">{{ jogo.inicio }} - {{ jogo.local.nome }} - {{ jogo.confirmados.length }} confirmados</div>
+            <div class="card-title">{{ jogo.inicio }} - {{ jogo.local.nome }} - {{ jogo.confirmados.length }} confirmados</div>            
             <div class="row">
                 <div class="col s4 m2 l2 center" *ngFor="let confirmado of jogo.confirmados">
                     <img src="{{ getImagem(confirmado.atleta) }}" class="circle" width="70px" height="70px" title="{{ confirmado.atleta.apelido }} "
