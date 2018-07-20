@@ -42,4 +42,8 @@ export class LoginComponent implements OnInit {
     isLogado() {
         return this.autenticacaoService.isLogged();
     }
+
+    esqueci(){
+        alert("Que pena, amiguinho. :)");
+    }
 }

@@ -13,7 +13,7 @@
                 <input type="password" class="loginFields" formControlName="pass" id="pass" required />
             </div>
             <div class="col s2 m1 l1 right">
-                <i class="small material-icons grey darken-1 login-icon" title="Esqueci minha senha">help</i>
+                <i class="small material-icons grey darken-1 login-icon" (click)="esqueci()" title="Esqueci minha senha">help</i>
             </div>    
             <div class="col s2 m2 l1 right">
                 <i id="login-send" class="small material-icons grey darken-1 login-icon" (click)="doLogin()">send</i>
