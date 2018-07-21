@@ -1,7 +1,50 @@
 <div class="container">
-    <div class="row">
-        <ul class="collection">
-            <li class="collection-item" *ngFor="let estatistica of estatisticas">{{ estatistica.titulo }}</li>
-        </ul>
+    <h3 class="section-title">Estat&iacute;sticas</h3>
+    <div class="centered-content" *ngIf="estatistica">
+        <div class="card col darken-1 z-depth-3">
+            <div class="card-content center">
+                {{ estatistica.sucessos.valor }}
+            </div>
+            <div class="card-action center">
+                {{ estatistica.sucessos.titulo }}
+            </div>
+        </div>
+        <div class="card col darken-1 z-depth-3">
+            <div class="card-content center">
+                {{ estatistica.fracassos.valor }}
+            </div>
+            <div class="card-action center">
+                {{ estatistica.fracassos.titulo }}
+            </div>
+        </div>
+        <div class="card col darken-1 z-depth-3">
+            <div class="card-content center">
+                {{ estatistica.total_atletas.valor }}
+            </div>
+            <div class="card-action center">
+                {{ estatistica.total_atletas.titulo }}
+            </div>
+        </div>
     </div>
+    <div class="centered-content-full" *ngIf="estatistica">
+        <div class="card col darken-1 z-depth-3">
+            <div class="card-content center">
+                <span *ngFor="let atleta of estatistica.assiduidade.atletas">{{ atleta.atleta }} ({{ atleta.contador }}), </span>
+            </div>
+            <div class="card-action center">
+                {{ estatistica.assiduidade.titulo }}
+            </div>
+        </div>
+    </div>
+    <div class="centered-content-full" *ngIf="estatistica">
+        <div class="card col darken-1 z-depth-3">
+            <div class="card-content center">
+                <span *ngFor="let atleta of estatistica.balanidade.atletas">{{ atleta.atleta }} ({{ atleta.contador }}), </span>
+            </div>
+            <div class="card-action center">
+                {{ estatistica.balanidade.titulo }}
+            </div>
+        </div>
+    </div>
+
 </div>

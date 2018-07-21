@@ -1,0 +1,18 @@
+.card-content {
+    font-size: 25pt;
+}
+
+.card-action {
+    font-weight: bold;
+}
+
+.centered-content {
+    grid-template-columns: repeat(auto-fill, 32%);
+}
+
+.centered-content-full {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 98%);
+    justify-content: center;
+    grid-gap: 10px;
+}

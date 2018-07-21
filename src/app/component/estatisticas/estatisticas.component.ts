@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EstatisticaService } from '../../service/estatistica.service';
+import { Estatistica } from '../../entity/estatistica';
 
 @Component({
     selector: 'app-estatisticas',
@@ -8,15 +9,16 @@ import { EstatisticaService } from '../../service/estatistica.service';
 })
 export class EstatisticasComponent implements OnInit {
 
-    estatisticas : Object[];
+    estatistica: Estatistica;
 
-    constructor(private estatisticaService : EstatisticaService) { }
+    constructor(private estatisticaService: EstatisticaService) { }
 
     ngOnInit() {
-        // this.estatisticas = this.estatisticaService.getEstatisticas().subscribe(
-        //     estatisticas => this.estatisticas = estatisticas,
-        //     error => console.log(error)
-        // );
+        this.estatisticaService.getEstatisticas().subscribe(
+            estatistica => {
+                this.estatistica = estatistica
+            },
+            error => console.log(error)
+        );
     }
-
 }
