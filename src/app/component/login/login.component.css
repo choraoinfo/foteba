@@ -10,6 +10,10 @@
     height: auto  !important;   
 }
 
+.loginFields:focus {
+    border-bottom: 2px solid #f28714 !important;
+}
+
 .login-icon {
     padding: 5px;    
     cursor: pointer;

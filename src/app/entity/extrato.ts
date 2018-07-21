@@ -1,6 +1,6 @@
 import { Lancamento } from "./lancamento";
 
 export class Extrato {
-    soma : number;
+    saldo : number;
     lancamentos : Lancamento[];
 }

@@ -37,10 +37,10 @@ export class PostService {
         var body = response.json();
         this.isLoading = false;
         this.observableLoading.next(this.isLoading);
-        this.message = body.message;
-        this.observableError.next(this.message);
     
         if (body.error === true){
+            this.message = body.message;
+            this.observableError.next(this.message);            
             throw body;
         }
             

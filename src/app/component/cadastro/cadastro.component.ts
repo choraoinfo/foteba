@@ -50,7 +50,8 @@ export class CadastroComponent implements OnInit {
     }
 
     private processSuccess(success){
-        // this.mensagemSucesso = success.message;        
+        this.senha = "";
+        this.confirmar_senha = "";
     }
 
     private processError(error){
@@ -62,3 +63,4 @@ export class CadastroComponent implements OnInit {
     }
 
 }
+

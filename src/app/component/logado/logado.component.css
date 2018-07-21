@@ -9,3 +9,7 @@ a i {
 .login-icon {
     padding: 10px;
 }
+
+.material-icons {
+    border: 1px ridge #000;
+}

@@ -33,10 +33,13 @@ export class LoginComponent implements OnInit {
     }
 
     private processError(error) {
-        // this.errorMessage = error.message;
+        this.formulario.patchValue(
+            { pass : '' }
+        );
     }
 
     private processResponse(result) {
+        this.formulario.reset();
     }
 
     isLogado() {
