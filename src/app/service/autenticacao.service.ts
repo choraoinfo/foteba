@@ -20,7 +20,7 @@ export class AutenticacaoService {
         var observable = this.post.send(this.SERVICE_URL, json);
         observable.subscribe(
             success => this.saveToken(success.message),
-            () => this.clear()
+            error => console.log(error)
         );
         return observable;
     }
@@ -28,10 +28,6 @@ export class AutenticacaoService {
     private saveToken(token){
         this.storage.save(this.TOKEN_STRING, token);
         this.router.navigate([""]);
-    }
-
-    private clear(){
-        this.logout();
     }
 
     logout(){
