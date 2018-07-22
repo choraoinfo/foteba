@@ -8,18 +8,18 @@ import { BehaviorSubject } from '../../../node_modules/rxjs/BehaviorSubject';
 export class PostService {
 
     BASE_URL = "http://foteba.modafaquers.com.br/api/";
-    private isLoading = false;
-    private observableLoading: BehaviorSubject<boolean>;
+    private isLoading = 0;
+    private observableLoading: BehaviorSubject<number>;
     private message: string;
     private observableError: BehaviorSubject<string>;
 
     constructor(private http: Http) { 
-        this.observableLoading = new BehaviorSubject<boolean>(this.isLoading);
+        this.observableLoading = new BehaviorSubject<number>(this.isLoading);
         this.observableError = new BehaviorSubject<string>(this.message);
     }
 
     send(service_url, json) {
-        this.isLoading = true;
+        this.isLoading++;
         this.message = "";
         this.observableError.next(this.message);
         this.observableLoading.next(this.isLoading);
@@ -35,7 +35,7 @@ export class PostService {
 
     private process(response){
         var body = response.json();
-        this.isLoading = false;
+        this.isLoading--;
         this.observableLoading.next(this.isLoading);
     
         if (body.error === true){

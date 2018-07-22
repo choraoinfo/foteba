@@ -8,8 +8,8 @@ import { AutenticacaoService } from './autenticacao.service';
 @Injectable()
 export class GetterService {
 
-    private loading = false;
-    private observableLoading: BehaviorSubject<boolean>;
+    private loading = 0;
+    private observableLoading: BehaviorSubject<number>;
     private message: string;
     private observableError: BehaviorSubject<string>;
 
@@ -17,7 +17,7 @@ export class GetterService {
 
     constructor(private http: Http,
         private autenticacaoService: AutenticacaoService) {
-        this.observableLoading = new BehaviorSubject<boolean>(this.loading);
+        this.observableLoading = new BehaviorSubject<number>(this.loading);
         this.observableError = new BehaviorSubject<string>(this.message);
     }
 
@@ -40,7 +40,7 @@ export class GetterService {
     }
 
     private loadingOn() {
-        this.loading = true;
+        this.loading++;
         this.observableLoading.next(this.loading);
         this.message = "";
         this.observableError.next(this.message);
@@ -55,7 +55,7 @@ export class GetterService {
     }
 
     private loadingOff() {
-        this.loading = false;
+        this.loading--;
         this.observableLoading.next(this.loading);
     }
 

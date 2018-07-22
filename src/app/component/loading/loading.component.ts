@@ -20,9 +20,9 @@ export class LoadingComponent implements OnInit {
 
     ngOnInit() {
         this.getWatcher = this.getterService.getLoadingWatcher().subscribe(
-            visible => this.getLoading = visible);
+            visible => this.getLoading = visible > 0);
         this.postWatcher = this.postService.getLoadingWatcher().subscribe(
-            visible => this.postLoading = visible);
+            visible => this.postLoading = visible > 0);
     }
 
     isLoading() {
