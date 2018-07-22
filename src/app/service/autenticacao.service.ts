@@ -8,6 +8,7 @@ export class AutenticacaoService {
 
     TOKEN_STRING = "user.token";
     SERVICE_URL = "atleta/login";
+    SERVICE_OUT = "atleta/logout";
 
     constructor(private storage : StorageService,
                 private post : PostService,
@@ -34,6 +35,9 @@ export class AutenticacaoService {
     }
 
     logout(){
+        this.post.send(this.SERVICE_OUT, { token : this.getToken()}).subscribe(
+            () => {}, error => console.log(error)
+        );
         this.storage.delete(this.TOKEN_STRING);
         this.router.navigate([""]);
     }

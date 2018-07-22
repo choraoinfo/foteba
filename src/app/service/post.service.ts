@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
 import { Headers } from '@angular/http'
 import { BehaviorSubject } from '../../../node_modules/rxjs/BehaviorSubject';
 
@@ -30,7 +31,7 @@ export class PostService {
             params, {
                 headers: cabe
             })
-            .map(res => this.process(res));        
+            .map(res => this.process(res)).share();        
     }
 
     private process(response){
