@@ -25,6 +25,7 @@ export class AutenticacaoService {
     }
 
     private saveToken(token){
+        this.router.navigate([""]);
         this.storage.save(this.TOKEN_STRING, token);
     }
 
