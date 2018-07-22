@@ -37,7 +37,15 @@
                 </div>
                 <div class="row">
                     <div class="col s12 m12 l12">
-                        <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput name="avatar" formControlName="avatar">
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Trocar foto</span>
+                                <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput name="avatar" formControlName="avatar">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input type="text" class="file-path validate" name="avatar_name" formControlName="avatar_name">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -56,7 +64,7 @@
                 </div>
                 <div class="row" *ngIf="!salvando">
                     <div class="col s12 m4 l4">
-                        <button class="btn waves-effect waves-light" type="submit" name="action" >Salvar
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
                             <i class="material-icons right">save</i>
                         </button>
                     </div>

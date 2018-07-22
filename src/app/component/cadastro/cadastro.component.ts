@@ -46,7 +46,8 @@ export class CadastroComponent implements OnInit {
             goleiro_fixo : this.atleta.goleiro_fixo,
             avatar : [null],
             senha : [null],
-            confirmar_senha : [null] 
+            confirmar_senha : [null],
+            avatar_name : [null]
         });        
     }
 
@@ -75,7 +76,8 @@ export class CadastroComponent implements OnInit {
         this.formulario.patchValue({
             senha : '',
             confirmar_senha : '',
-            avatar : ''
+            avatar : '',
+            avatar_name : null
         });
         this.carregaAtleta();
     }
