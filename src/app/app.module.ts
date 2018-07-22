@@ -51,13 +51,13 @@ import { ConfiguracaoService } from './service/configuracao.service';
         ReactiveFormsModule,
         RouterModule.forRoot([
             { path : '', component : JogosComponent },
-            { path : 'noticias', component : NoticiasComponent },
+            { path : 'noticias', component : NoticiasComponent},
             { path : 'regras', component : RegrasComponent },
             { path : 'cadastro', component : CadastroComponent },
             { path : 'atletas', component : AtletasComponent },
             { path : 'estatisticas', component : EstatisticasComponent },
             { path : 'extrato', component : ExtratoComponent },
-        ])
+        ], {onSameUrlNavigation : 'reload' } )
     ],
     providers: [
         JogoService,
