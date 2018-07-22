@@ -54,6 +54,12 @@ export class JogosComponent implements OnInit {
         );        
     }
 
+    valorDoJogo(jogo){
+        let valorQuadra = this.configuracao.valor_jogo;
+        let qtdeConfirmados = jogo.confirmados.length;
+        return qtdeConfirmados == 0 ? 0 : Math.ceil(valorQuadra / qtdeConfirmados);
+    }
+
     podeConfirmar(jogo) {
         return this.autenticacaoService.isLogged() &&
             jogo.confirmados.length < this.configuracao.max_jogadores &&

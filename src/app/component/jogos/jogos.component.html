@@ -6,13 +6,16 @@
                     (click)="confirmar(jogo)" title="Confirmar">person_add</i>    
             <i class="small material-icons orange darken-1 confirmacao" *ngIf="estaConfirmado(jogo)" 
                     (click)="desconfirmar(jogo)" title="Balaniar">spa</i>
+            <a href="http://www.google.com.br/maps/place/{{ jogo.local.endereco }}" target="_blank">
+                <i class="small material-icons blue lighten-1 confirmacao" title="Ver local do jogo no Maps">location_on</i>
+            </a>
 
             <div class="right">
                 <p class="red darken-1 confirmacao" *ngIf="status(jogo) == 1">Jogo cancelado</p>
                 <p class="amber darken-2 confirmacao" *ngIf="status(jogo) == 2">Jogo ainda não confirmado</p>
                 <p class="green darken-1 confirmacao" *ngIf="status(jogo) == 0">Jogo confirmado</p>
             </div>
-            <div class="card-title">{{ jogo.inicio }} - {{ jogo.local.nome }}</div>
+            <div class="card-title">{{ jogo.inicio }}h | Local: {{ jogo.local.nome }} | Valor: R$ {{ valorDoJogo(jogo) }}</div>
             <p>{{ jogo.confirmados.length }} confirmados</p>
             <div class="centered-content">
                 <div class="col s4 m2 l2 center" *ngFor="let confirmado of jogo.confirmados">
