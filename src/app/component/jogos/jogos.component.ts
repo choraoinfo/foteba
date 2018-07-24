@@ -51,7 +51,7 @@ export class JogosComponent implements OnInit {
         this.jogosService.getProximosJogos().subscribe(
             jogos => this.jogos = jogos,
             error => console.log(error)
-        );        
+        );         
     }
 
     valorDoJogo(jogo){

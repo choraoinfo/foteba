@@ -2,10 +2,8 @@
     <h3 class="section-title">Pr&oacute;ximos jogos</h3>
     <div class="card blue-grey darken-1 z-depth-5" *ngFor="let jogo of jogos">
         <div class="card-content white-text">
-            <i class="small material-icons green darken-1 confirmacao" *ngIf="podeConfirmar(jogo)" 
-                    (click)="confirmar(jogo)" title="Confirmar">person_add</i>    
-            <i class="small material-icons orange darken-1 confirmacao" *ngIf="estaConfirmado(jogo)" 
-                    (click)="desconfirmar(jogo)" title="Balaniar">spa</i>
+            <i class="small material-icons green darken-1 confirmacao" *ngIf="podeConfirmar(jogo)" (click)="confirmar(jogo)" title="Confirmar">person_add</i>
+            <i class="small material-icons orange darken-1 confirmacao" *ngIf="estaConfirmado(jogo)" (click)="desconfirmar(jogo)" title="Balaniar">spa</i>
             <a href="http://www.google.com.br/maps/place/{{ jogo.local.endereco }}" target="_blank">
                 <i class="small material-icons blue lighten-1 confirmacao" title="Ver local do jogo no Maps">location_on</i>
             </a>
@@ -16,21 +14,29 @@
                 <p class="green darken-1 confirmacao" *ngIf="status(jogo) == 0">Jogo confirmado</p>
             </div>
             <div class="card-title">{{ jogo.inicio }}h | Local: {{ jogo.local.nome }} | Valor: R$ {{ valorDoJogo(jogo) }}</div>
-            <p>{{ jogo.confirmados.length }} confirmados</p>
+            <h5>{{ jogo.confirmados.length }} confirmados</h5>
             <div class="centered-content">
-                <div class="col s4 m2 l2 center" *ngFor="let confirmado of jogo.confirmados">
-                    <img src="{{ getImagem(confirmado.atleta) }}" title="{{ confirmado.atleta.apelido }} "
-                    />
+                <div class="card col darken-1 z-depth-3" *ngFor="let confirmado of jogo.confirmados">
+                    <div class="card-content center">
+                        <img class="portrait" src="{{ getImagem(confirmado.atleta) }}" alt="{{ confirmado.atleta.apelido }}">
+                    </div>
+                    <div class="card-action center">
+                        {{ confirmado.atleta.apelido }}
+                    </div>
                 </div>
             </div>
-            <p>{{ jogo.balaniantes.length }} balaniantes</p>
+            <h5>{{ jogo.balaniantes.length }} balaniantes</h5>
             <div class="centered-content">
-                <div class="col s4 m2 l2 center" *ngFor="let confirmado of jogo.balaniantes">
-                    <img src="{{ getImagem(confirmado.atleta) }}" title="{{ confirmado.atleta.apelido }} "
-                    />
-                </div>
+                <div class="card col darken-1 z-depth-3" *ngFor="let balaniante of jogo.balaniantes">
+                    <div class="card-content center">
+                        <img class="portrait" src="{{ getImagem(balaniante.atleta) }}" alt="{{ balaniante.atleta.apelido }}">
+                    </div>
+                    <div class="card-action center">
+                        {{ balaniante.atleta.apelido }}
+                    </div>
                 </div>
             </div>
+        </div>
         <div class="card-action" *ngIf="">
             <a class="waves-effect waves-light btn">
                 <i class="material-icons right">thumb_up</i>Confirmar</a>
