@@ -57,7 +57,7 @@ import { ConfiguracaoService } from './service/configuracao.service';
             { path: 'atletas', component: AtletasComponent },
             { path: 'estatisticas', component: EstatisticasComponent },
             { path: 'extrato', component: ExtratoComponent },
-        ], { onSameUrlNavigation: 'reload' })
+        ],  { useHash: true } )
     ],
     providers: [
         JogoService,
