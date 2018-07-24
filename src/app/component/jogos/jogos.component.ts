@@ -67,6 +67,8 @@ export class JogosComponent implements OnInit {
     }
 
     estaConfirmado(jogo) {
+        if (!this.atleta || !this.autenticacaoService.isLogged())
+            return false;
         for (let cont = 0; cont < jogo.confirmados.length; cont++)
             if (jogo.confirmados[cont].atleta.id == this.atleta.id && jogo.confirmados[cont].ativo == 1)
                 return true;
@@ -78,7 +80,7 @@ export class JogosComponent implements OnInit {
     }
 
     podeRenderizar() {
-        return this.autenticacaoService.isLogged() && this.jogos && this.configuracao && this.atleta;
+        return this.jogos && this.configuracao;
     }
 
     status(jogo) {

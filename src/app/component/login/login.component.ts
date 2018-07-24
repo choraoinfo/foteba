@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
     }
 
     doLogin() {
+        if (!this.formulario.valid)
+            return;
         let pass = Md5.hashStr(this.formulario.value.pass);
         let user = this.formulario.value.user;
         this.autenticacaoService.login(user, pass).subscribe(
@@ -34,7 +36,7 @@ export class LoginComponent implements OnInit {
 
     private processError(error) {
         this.formulario.patchValue(
-            { pass : '' }
+            { pass: '' }
         );
     }
 
@@ -46,7 +48,7 @@ export class LoginComponent implements OnInit {
         return this.autenticacaoService.isLogged();
     }
 
-    esqueci(){
+    esqueci() {
         alert("Que pena, amiguinho. :)");
     }
 }

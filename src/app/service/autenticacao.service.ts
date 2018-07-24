@@ -10,12 +10,12 @@ export class AutenticacaoService {
     SERVICE_URL = "atleta/login";
     SERVICE_OUT = "atleta/logout";
 
-    constructor(private storage : StorageService,
-                private post : PostService,
-                private router : Router) { 
+    constructor(private storage: StorageService,
+        private post: PostService,
+        private router: Router) {
     }
 
-    login(user, pass){
+    login(user, pass) {
         var json = JSON.stringify({ 'user': user, 'pass': pass });
         var observable = this.post.send(this.SERVICE_URL, json);
         observable.subscribe(
@@ -25,24 +25,24 @@ export class AutenticacaoService {
         return observable;
     }
 
-    private saveToken(token){
+    private saveToken(token) {
         this.storage.save(this.TOKEN_STRING, token);
         this.router.navigate([""]);
     }
 
-    logout(){
-        this.post.send(this.SERVICE_OUT, { token : this.getToken()}).subscribe(
-            () => {}, error => console.log(error)
+    logout() {
+        this.post.send(this.SERVICE_OUT, { token: this.getToken() }).subscribe(
+            () => { }, error => console.log(error)
         );
         this.storage.delete(this.TOKEN_STRING);
         this.router.navigate([""]);
     }
 
-    isLogged(){        
+    isLogged() {
         return this.getToken() != null;
     }
 
-    getToken(){        
+    getToken() {
         return this.storage.get(this.TOKEN_STRING);
     }
 }
