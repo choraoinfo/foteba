@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import "rxjs/add/operator/delay";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
 import { AutenticacaoService } from './autenticacao.service';
 
 @Injectable()
@@ -23,7 +24,7 @@ export class GetterService {
 
     get(service: string) {
         this.loadingOn();
-        let obs = this.http.get(this.BASE_URL + service).map(this.extractData).delay(1000);
+        let obs = this.http.get(this.BASE_URL + service).map(this.extractData).share(); //.delay(1000);
         obs.subscribe(
             () => this.loadingOff(), error => this.processError(error)
         );
