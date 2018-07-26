@@ -17,7 +17,7 @@
             <h5>{{ jogo.confirmados.length }} confirmados</h5>
             <div class="centered-content">
                 <div class="card col darken-1 z-depth-3" *ngFor="let confirmado of jogo.confirmados">
-                    <div class="card-content center">
+                    <div class="card-content atleta center">
                         <img class="portrait" src="{{ getImagem(confirmado.atleta) }}" alt="{{ confirmado.atleta.apelido }}">
                     </div>
                     <div class="card-action center">
@@ -28,7 +28,7 @@
             <h5>{{ jogo.balaniantes.length }} balaniantes</h5>
             <div class="centered-content">
                 <div class="card col darken-1 z-depth-3" *ngFor="let balaniante of jogo.balaniantes">
-                    <div class="card-content center">
+                    <div class="card-content atleta center">
                         <img class="portrait" src="{{ getImagem(balaniante.atleta) }}" alt="{{ balaniante.atleta.apelido }}">
                     </div>
                     <div class="card-action center">
