@@ -61,14 +61,20 @@ export class JogosComponent implements OnInit {
     }
 
     podeConfirmar(jogo) {
+        console.log("1");
         return this.autenticacaoService.isLogged() &&
             jogo.confirmados.length < this.configuracao.max_jogadores &&
-            !this.estaConfirmado(jogo);
+            this.atleta && !this.estaConfirmado(jogo);
+    }
+    
+    podeDesconfirmar(jogo) {
+        return this.autenticacaoService.isLogged() &&            
+            this.atleta && this.estaConfirmado(jogo);
     }
 
-    estaConfirmado(jogo) {
-        if (!this.atleta || !this.autenticacaoService.isLogged())
-            return false;
+    private estaConfirmado(jogo) {
+        if (!this.atleta)
+            return true;
         for (let cont = 0; cont < jogo.confirmados.length; cont++)
             if (jogo.confirmados[cont].atleta.id == this.atleta.id && jogo.confirmados[cont].ativo == 1)
                 return true;

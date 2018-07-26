@@ -3,7 +3,7 @@
     <div class="card blue-grey darken-1 z-depth-5" *ngFor="let jogo of jogos">
         <div class="card-content white-text">
             <i class="small material-icons green darken-1 confirmacao" *ngIf="podeConfirmar(jogo)" (click)="confirmar(jogo)" title="Confirmar">person_add</i>
-            <i class="small material-icons orange darken-1 confirmacao" *ngIf="estaConfirmado(jogo)" (click)="desconfirmar(jogo)" title="Balaniar">spa</i>
+            <i class="small material-icons orange darken-1 confirmacao" *ngIf="podeDesconfirmar(jogo)" (click)="desconfirmar(jogo)" title="Balaniar">spa</i>
             <a href="http://www.google.com.br/maps/place/{{ jogo.local.endereco }}" target="_blank">
                 <i class="small material-icons blue lighten-1 confirmacao" title="Ver local do jogo no Maps">location_on</i>
             </a>
