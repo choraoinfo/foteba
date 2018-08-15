@@ -22,7 +22,7 @@ export class JogosComponent implements OnInit {
     private configuracao: Configuracao;
     private atleta: Atleta;
     private CONFIRMATION_SERVICE = "jogo/confirmacao";
-
+    
     constructor(private jogosService: JogoService,
         private imagemResolver: ImageResolverService,
         private autenticacaoService: AutenticacaoService,
@@ -77,6 +77,12 @@ export class JogosComponent implements OnInit {
             if (jogo.confirmados[cont].atleta.id == this.atleta.id && jogo.confirmados[cont].ativo == 1)
                 return true;
         return false;
+    }
+
+    getAvatar(atleta, jogo) {
+        if (atleta.saldo >= this.valorDoJogo(jogo))
+            return this.getImagem(atleta);
+        return "./assets/img/selo.png";
     }
 
     getImagem(atleta) {
