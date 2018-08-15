@@ -28,6 +28,7 @@ import { ExtratoComponent } from './component/extrato/extrato.component';
 import { LoadingComponent } from './component/loading/loading.component';
 import { MensagemComponent } from './component/mensagem/mensagem.component';
 import { ConfiguracaoService } from './service/configuracao.service';
+import { BalaniarComponent } from './component/balaniar/balaniar.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import { ConfiguracaoService } from './service/configuracao.service';
         ExtratoComponent,
         LoadingComponent,
         MensagemComponent,
-        JogosComponent
+        JogosComponent,
+        BalaniarComponent
     ],
     imports: [
         BrowserModule,
@@ -57,6 +59,7 @@ import { ConfiguracaoService } from './service/configuracao.service';
             { path: 'atletas', component: AtletasComponent },
             { path: 'estatisticas', component: EstatisticasComponent },
             { path: 'extrato', component: ExtratoComponent },
+            { path: 'balaniar', component: BalaniarComponent },
         ],  { useHash: true } )
     ],
     providers: [

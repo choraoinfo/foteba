@@ -22,7 +22,6 @@ export class JogosComponent implements OnInit {
     private configuracao: Configuracao;
     private atleta: Atleta;
     private CONFIRMATION_SERVICE = "jogo/confirmacao";
-    private DESCONFIRMATION_SERVICE = "jogo/desconfirmacao";
 
     constructor(private jogosService: JogoService,
         private imagemResolver: ImageResolverService,
@@ -61,7 +60,6 @@ export class JogosComponent implements OnInit {
     }
 
     podeConfirmar(jogo) {
-        console.log("1");
         return this.autenticacaoService.isLogged() &&
             jogo.confirmados.length < this.configuracao.max_jogadores &&
             this.atleta && !this.estaConfirmado(jogo);
@@ -111,14 +109,5 @@ export class JogosComponent implements OnInit {
     private erro(error){
         this.listaJogos();
         console.log(error);
-    }
-
-    desconfirmar(jogo) {
-        var json : any = {};
-        json.jogo = jogo.id;
-        json.atleta = this.autenticacaoService.getToken();
-        this.postService.send(this.DESCONFIRMATION_SERVICE,json).subscribe(
-            () => this.sucesso(), error => this.erro(error)
-        );
     }
 }
