@@ -29,6 +29,7 @@ import { LoadingComponent } from './component/loading/loading.component';
 import { MensagemComponent } from './component/mensagem/mensagem.component';
 import { ConfiguracaoService } from './service/configuracao.service';
 import { BalaniarComponent } from './component/balaniar/balaniar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,7 @@ import { BalaniarComponent } from './component/balaniar/balaniar.component';
     ],
     imports: [
         BrowserModule,
-        HttpModule,
+        HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forRoot([

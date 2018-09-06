@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/delay';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AutenticacaoService } from './autenticacao.service';
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
-import { AutenticacaoService } from './autenticacao.service';
 
 @Injectable()
 export class GetterService {
@@ -16,7 +16,7 @@ export class GetterService {
 
     BASE_URL = 'http://foteba.modafaquers.com.br/api/';
 
-    constructor(private http: Http,
+    constructor(private http: HttpClient,
         private autenticacaoService: AutenticacaoService) {
         this.observableLoading = new BehaviorSubject<number>(this.loading);
         this.observableError = new BehaviorSubject<string>(this.message);
@@ -32,7 +32,7 @@ export class GetterService {
     }
 
     private extractData(response) {
-        const body = response.json();
+        const body = response;
         if (body.error === true) {
             throw body;
         }
