@@ -33,7 +33,7 @@ export class PostService {
     }
 
     private process(response) {
-        const body = response.json();
+        const body = response;
         this.isLoading--;
         this.observableLoading.next(this.isLoading);
 
