@@ -6,7 +6,7 @@ import { GetterService } from './getter.service';
 @Injectable()
 export class RegraService {
 
-    REGRAS = "regras";
+    REGRAS = 'regras';
 
     constructor(private getter: GetterService) { }
 

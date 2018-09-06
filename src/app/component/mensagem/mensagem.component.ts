@@ -39,7 +39,7 @@ export class MensagemComponent implements OnInit {
     }
 
     dismiss() {
-        this.getMessage = "";
-        this.postMessage = "";
+        this.getMessage = '';
+        this.postMessage = '';
     }
 }

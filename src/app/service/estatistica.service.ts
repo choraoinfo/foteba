@@ -6,7 +6,7 @@ import { GetterService } from './getter.service';
 @Injectable()
 export class EstatisticaService {
 
-    private STAT_SERVICE = "estatisticas";
+    private STAT_SERVICE = 'estatisticas';
 
     constructor(private getter: GetterService) { }
 

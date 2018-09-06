@@ -6,7 +6,7 @@ import { GetterService } from './getter.service';
 @Injectable()
 export class NoticiaService {
 
-    NOTICIAS = "noticias";
+    NOTICIAS = 'noticias';
 
     constructor(private getter: GetterService) { }
 

@@ -6,16 +6,16 @@ import { Atleta } from '../entity/atleta';
 @Injectable()
 export class AtletaService {
 
-    ALL_SERVICE = "atletas";
-    UNIQUE_SERVICE = "atleta/";
+    ALL_SERVICE = '"atletas';
+    UNIQUE_SERVICE = 'atleta/';
 
-    constructor(private getter: GetterService) { };
+    constructor(private getter: GetterService) { }
 
     getAtletas(): Observable<Atleta[]> {
         return this.getter.get(this.ALL_SERVICE);
     }
 
     getAtleta(id): Observable<Atleta> {
-        return this.getter.get(this.UNIQUE_SERVICE + id)
+        return this.getter.get(this.UNIQUE_SERVICE + id);
     }
 }

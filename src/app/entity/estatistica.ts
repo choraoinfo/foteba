@@ -1,5 +1,5 @@
 export class Estatistica {
-    valor : number;
-    titulo : string;
-    atletas : any[];
+    valor: number;
+    titulo: string;
+    atletas: any[];
 }

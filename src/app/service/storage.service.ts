@@ -8,15 +8,15 @@ export class StorageService {
         this.localStorage = window.localStorage;
     }
 
-    save(key, value){
+    save(key, value) {
         this.localStorage.setItem(key, value);
     }
 
-    get(key){
+    get(key) {
         return this.localStorage.getItem(key);
     }
 
-    delete(key){
+    delete(key) {
         this.localStorage.removeItem(key);
     }
 }

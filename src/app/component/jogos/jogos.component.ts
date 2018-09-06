@@ -21,42 +21,43 @@ export class JogosComponent implements OnInit {
     private promiseJogos: Observable<Jogo[]>;
     private configuracao: Configuracao;
     private atleta: Atleta;
-    private CONFIRMATION_SERVICE = "jogo/confirmacao";
-    
+    private CONFIRMATION_SERVICE = 'jogo/confirmacao';
+
     constructor(private jogosService: JogoService,
         private imagemResolver: ImageResolverService,
         private autenticacaoService: AutenticacaoService,
         private configuracaoService: ConfiguracaoService,
         private atletaService: AtletaService,
-        private postService : PostService) { }
+        private postService: PostService) { }
 
     ngOnInit(): void {
         this.configuracaoService.getConfiguracao().subscribe(
             config => this.configuracao = config,
             error => console.log(error)
-        )
-        if (this.autenticacaoService.isLogged())
+        );
+        if (this.autenticacaoService.isLogged()) {
             this.atletaService.getAtleta(this.autenticacaoService.getToken()).subscribe(
                 atleta => {
-                    this.atleta = atleta
+                    this.atleta = atleta;
                 },
                 error => console.log(error)
             );
+        }
 
         this.listaJogos();
     }
 
-    private listaJogos(){
+    private listaJogos() {
         this.jogosService.getProximosJogos().subscribe(
             jogos => this.jogos = jogos,
             error => console.log(error)
-        );         
+        );
     }
 
-    valorDoJogo(jogo){
-        let valorQuadra = this.configuracao.valor_jogo;
-        let qtdeConfirmados = jogo.confirmados.length + jogo.convidados.length;
-        return qtdeConfirmados == 0 ? 0 : Math.ceil(valorQuadra / qtdeConfirmados);
+    valorDoJogo(jogo) {
+        const valorQuadra = this.configuracao.valor_jogo;
+        const qtdeConfirmados = jogo.confirmados.length + jogo.convidados.length;
+        return qtdeConfirmados === 0 ? 0 : Math.ceil(valorQuadra / qtdeConfirmados);
     }
 
     podeConfirmar(jogo) {
@@ -64,25 +65,29 @@ export class JogosComponent implements OnInit {
             jogo.confirmados.length < this.configuracao.max_jogadores &&
             this.atleta && !this.estaConfirmado(jogo);
     }
-    
+
     podeDesconfirmar(jogo) {
-        return this.autenticacaoService.isLogged() &&            
+        return this.autenticacaoService.isLogged() &&
             this.atleta && this.estaConfirmado(jogo);
     }
 
     private estaConfirmado(jogo) {
-        if (!this.atleta)
+        if (!this.atleta) {
             return true;
-        for (let cont = 0; cont < jogo.confirmados.length; cont++)
-            if (jogo.confirmados[cont].atleta.id == this.atleta.id && jogo.confirmados[cont].ativo == 1)
+        }
+        for (let cont = 0; cont < jogo.confirmados.length; cont++) {
+            if (jogo.confirmados[cont].atleta.id === this.atleta.id && jogo.confirmados[cont].ativo === 1) {
                 return true;
+            }
+        }
         return false;
     }
 
     getAvatar(atleta, jogo) {
-        if (atleta.saldo >= this.valorDoJogo(jogo))
+        if (atleta.saldo >= this.valorDoJogo(jogo)) {
             return this.getImagem(atleta);
-        return "./assets/img/selo.png";
+        }
+        return './assets/img/selo.png';
     }
 
     getImagem(atleta) {
@@ -94,25 +99,26 @@ export class JogosComponent implements OnInit {
     }
 
     status(jogo) {
-        if (jogo.status != 1 && jogo.confirmados.length < this.configuracao.min_jogadores)
+        if (jogo.status !== 1 && jogo.confirmados.length < this.configuracao.min_jogadores) {
             return 2;
+        }
         return jogo.status;
     }
 
     confirmar(jogo) {
-        var json : any = {};
+        const json: any = {};
         json.jogo = jogo.id;
         json.atleta = this.autenticacaoService.getToken();
-        this.postService.send(this.CONFIRMATION_SERVICE,json).subscribe(
+        this.postService.send(this.CONFIRMATION_SERVICE, json).subscribe(
             () => this.sucesso(), error => this.erro(error)
         );
     }
 
-    private sucesso(){
+    private sucesso() {
         this.listaJogos();
     }
 
-    private erro(error){
+    private erro(error) {
         this.listaJogos();
         console.log(error);
     }

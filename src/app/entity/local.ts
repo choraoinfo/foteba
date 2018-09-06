@@ -1,4 +1,4 @@
 export class Local {
-    id : number;
-    nome : string;
+    id: number;
+    nome: string;
 }

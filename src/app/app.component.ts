@@ -8,11 +8,10 @@ import { AutenticacaoService } from './service/autenticacao.service';
 })
 export class AppComponent {
     title = 'app';
-    selectedTab =  "tab-home";
 
-    constructor(private autenticacaoService : AutenticacaoService){}
+    constructor(private autenticacaoService: AutenticacaoService) {}
 
-    doLogout(){
+    doLogout() {
         this.autenticacaoService.logout();
     }
 }

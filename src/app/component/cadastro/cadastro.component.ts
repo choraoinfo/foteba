@@ -29,26 +29,26 @@ export class CadastroComponent implements OnInit {
         this.carregaAtleta();
     }
 
-    private carregaAtleta(){
+    private carregaAtleta() {
         this.atletaService.getAtleta(this.autenticacaoService.getToken()).subscribe(
             atleta => this.sucesso(atleta),
             error => console.log(error));
     }
 
-    private buildForm(){
+    private buildForm() {
         this.formulario = this.formBuilder.group({
             token: this.autenticacaoService.getToken(),
-            nome : [this.atleta.nome, Validators.required],
-            apelido : this.atleta.apelido,
-            login : { value : this.atleta.login, disabled : true },
-            ativo : { value : this.atleta.ativo, disabled : true },
-            machucado : this.atleta.machucado,
-            goleiro_fixo : this.atleta.goleiro_fixo,
-            avatar : [null],
-            senha : [null],
-            confirmar_senha : [null],
-            avatar_name : [null]
-        });        
+            nome: [this.atleta.nome, Validators.required],
+            apelido: this.atleta.apelido,
+            login: { value: this.atleta.login, disabled: true },
+            ativo: { value: this.atleta.ativo, disabled: true },
+            machucado: this.atleta.machucado,
+            goleiro_fixo: this.atleta.goleiro_fixo,
+            avatar: [null],
+            senha: [null],
+            confirmar_senha: [null],
+            avatar_name: [null]
+        });
     }
 
     private sucesso(atleta) {
@@ -57,27 +57,29 @@ export class CadastroComponent implements OnInit {
     }
 
     getImage() {
-        if (this.atleta.avatar)
+        if (this.atleta.avatar) {
             return this.imageResolver.resolveImageAvatar(this.atleta);
+        }
     }
 
     doSubmit() {
-        if (this.formulario.valid)
+        if (this.formulario.valid) {
             this.salvando = true;
-            this.post.send("atleta/cadastro", this.formulario.value)
-                .subscribe(
-                    success => this.processSuccess(success),
-                    error => this.processError(error)
-                );
+        }
+        this.post.send('atleta/cadastro', this.formulario.value)
+            .subscribe(
+                success => this.processSuccess(success),
+                error => this.processError(error)
+            );
     }
 
-    private processSuccess(success) {        
+    private processSuccess(success) {
         this.salvando = false;
         this.formulario.patchValue({
-            senha : '',
-            confirmar_senha : '',
-            avatar : '',
-            avatar_name : null
+            senha: '',
+            confirmar_senha: '',
+            avatar: '',
+            avatar_name: null
         });
         this.carregaAtleta();
     }
@@ -91,16 +93,16 @@ export class CadastroComponent implements OnInit {
     }
 
     onFileChange(event) {
-        let reader = new FileReader();
+        const reader = new FileReader();
         if (event.target.files && event.target.files.length > 0) {
-            let file = event.target.files[0];
+            const file = event.target.files[0];
             reader.readAsDataURL(file);
             reader.onload = () => {
                 this.formulario.value.avatar = {
                     filename: file.name,
                     filetype: file.type,
                     value: reader.result.split(',')[1]
-                }
+                };
             };
         }
     }

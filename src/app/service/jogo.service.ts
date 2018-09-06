@@ -6,10 +6,10 @@ import 'rxjs/add/operator/toPromise';
 import { GetterService } from './getter.service';
 import { Observable } from 'rxjs/Observable';
 
-@Injectable() 
+@Injectable()
 export class JogoService {
 
-    SERVICE = "jogos/proximos";
+    SERVICE = 'jogos/proximos';
 
     constructor(private getter: GetterService) { }
 

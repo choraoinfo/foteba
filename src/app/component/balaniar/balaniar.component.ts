@@ -10,28 +10,29 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class BalaniarComponent implements OnInit {
 
-    private DESCONFIRMATION_SERVICE = "jogo/desconfirmacao";
+    private DESCONFIRMATION_SERVICE = 'jogo/desconfirmacao';
     private jogoId = null;
 
     constructor(private autenticacaoService: AutenticacaoService,
         private postService: PostService,
         private router: Router,
-        private activateRoute : ActivatedRoute) { }
+        private activateRoute: ActivatedRoute) { }
 
     ngOnInit() {
         this.activateRoute
-        .queryParamMap
-        .subscribe(params => this.get(params.get("jogoid")), error => console.log(error));
+            .queryParamMap
+            .subscribe(params => this.get(params.get('jogoid')), error => console.log(error));
     }
 
-    private get(id){
+    private get(id) {
         this.jogoId = id;
     }
 
     desconfirmar() {
-        if (!this.jogoId)
+        if (!this.jogoId) {
             return;
-        var json: any = {};
+        }
+        const json: any = {};
         json.jogo = this.jogoId;
         json.atleta = this.autenticacaoService.getToken();
         this.postService.send(this.DESCONFIRMATION_SERVICE, json).subscribe(
@@ -40,7 +41,7 @@ export class BalaniarComponent implements OnInit {
     }
 
     private sucesso() {
-        this.router.navigate([""]);
+        this.router.navigate(['']);
     }
 
     private erro(error) {

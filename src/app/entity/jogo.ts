@@ -1,6 +1,6 @@
-import { Local } from "./local";
+import { Local } from './local';
 
 export class Jogo {
-    data  : string;
-    local : Local;
+    data: string;
+    local: Local;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import "rxjs/add/operator/delay";
+import 'rxjs/add/operator/delay';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
@@ -14,7 +14,7 @@ export class GetterService {
     private message: string;
     private observableError: BehaviorSubject<string>;
 
-    BASE_URL = "http://foteba.modafaquers.com.br/api/";
+    BASE_URL = 'http://foteba.modafaquers.com.br/api/';
 
     constructor(private http: Http,
         private autenticacaoService: AutenticacaoService) {
@@ -24,7 +24,7 @@ export class GetterService {
 
     get(service: string) {
         this.loadingOn();
-        let obs = this.http.get(this.BASE_URL + service).map(this.extractData).share(); //.delay(1000);
+        const obs = this.http.get(this.BASE_URL + service).map(this.extractData).share(); // .delay(1000);
         obs.subscribe(
             () => this.loadingOff(), error => this.processError(error)
         );
@@ -32,7 +32,7 @@ export class GetterService {
     }
 
     private extractData(response) {
-        var body = response.json();
+        const body = response.json();
         if (body.error === true) {
             throw body;
         }
@@ -43,13 +43,14 @@ export class GetterService {
     private loadingOn() {
         this.loading++;
         this.observableLoading.next(this.loading);
-        this.message = "";
+        this.message = '';
         this.observableError.next(this.message);
     }
 
     private processError(error) {
-        if (error.logout === true)
+        if (error.logout === true) {
             this.autenticacaoService.logout();
+        }
         this.message = error.message;
         this.observableError.next(this.message);
         this.loadingOff();

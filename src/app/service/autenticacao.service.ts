@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AutenticacaoService {
 
-    TOKEN_STRING = "user.token";
-    SERVICE_URL = "atleta/login";
-    SERVICE_OUT = "atleta/logout";
+    TOKEN_STRING = 'user.token';
+    SERVICE_URL = 'atleta/login';
+    SERVICE_OUT = 'atleta/logout';
 
     constructor(private storage: StorageService,
         private post: PostService,
@@ -16,8 +16,8 @@ export class AutenticacaoService {
     }
 
     login(user, pass) {
-        var json = JSON.stringify({ 'user': user, 'pass': pass });
-        var observable = this.post.send(this.SERVICE_URL, json);
+        const json = JSON.stringify({ 'user': user, 'pass': pass });
+        const observable = this.post.send(this.SERVICE_URL, json);
         observable.subscribe(
             success => this.saveToken(success.message),
             error => console.log(error)
@@ -27,7 +27,7 @@ export class AutenticacaoService {
 
     private saveToken(token) {
         this.storage.save(this.TOKEN_STRING, token);
-        this.router.navigate([""]);
+        this.router.navigate(['']);
     }
 
     logout() {
@@ -35,7 +35,7 @@ export class AutenticacaoService {
             () => { }, error => console.log(error)
         );
         this.storage.delete(this.TOKEN_STRING);
-        this.router.navigate([""]);
+        this.router.navigate(['']);
     }
 
     isLogged() {

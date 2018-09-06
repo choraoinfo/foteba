@@ -21,14 +21,15 @@ export class LoginComponent implements OnInit {
         this.formulario = this.formBuilder.group({
             user: [null],
             pass: [null],
-        })
+        });
     }
 
     doLogin() {
-        if (!this.formulario.valid)
+        if (!this.formulario.valid) {
             return;
-        let pass = Md5.hashStr(this.formulario.value.pass);
-        let user = this.formulario.value.user;
+        }
+        const pass = Md5.hashStr(this.formulario.value.pass);
+        const user = this.formulario.value.user;
         this.autenticacaoService.login(user, pass).subscribe(
             result => this.processResponse(result),
             error => this.processError(error));
@@ -49,6 +50,6 @@ export class LoginComponent implements OnInit {
     }
 
     esqueci() {
-        alert("Que pena, amiguinho. :)");
+        alert('Que pena, amiguinho. :)');
     }
 }

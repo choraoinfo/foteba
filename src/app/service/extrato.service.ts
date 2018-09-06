@@ -6,12 +6,11 @@ import { Extrato } from '../entity/extrato';
 @Injectable()
 export class ExtratoService {
 
-    private EXTRATO_SERVICE = "atleta/extrato/";
+    private EXTRATO_SERVICE = 'atleta/extrato/';
 
-    constructor(private getter: GetterService) { };
+    constructor(private getter: GetterService) { }
 
     getExtrato(token: string): Observable<Extrato> {
         return this.getter.get(this.EXTRATO_SERVICE + token);
     }
-
 }

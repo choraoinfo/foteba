@@ -13,5 +13,5 @@ export class Lancamento {
         ativo: number;
         created_at: string;
         updated_at: string;
-    }
+    };
 }
