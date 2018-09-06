@@ -6,7 +6,7 @@ import { Atleta } from '../entity/atleta';
 @Injectable()
 export class AtletaService {
 
-    ALL_SERVICE = '"atletas';
+    ALL_SERVICE = 'atletas';
     UNIQUE_SERVICE = 'atleta/';
 
     constructor(private getter: GetterService) { }
