@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" *ngIf="estatistica">
     <h3 class="section-title">Estat&iacute;sticas</h3>
-    <div class="centered-content" *ngIf="estatistica">
+    <div class="centered-content">
         <div class="card col darken-1 z-depth-3">
             <div class="card-content center">
                 {{ estatistica.sucessos.valor }}
@@ -26,25 +26,18 @@
             </div>
         </div>
     </div>
-    <div class="centered-content-full" *ngIf="estatistica">
-        <div class="card col darken-1 z-depth-3">
-            <div class="card-content center">
-                <span *ngFor="let atleta of estatistica.assiduidade.atletas">{{ atleta.atleta }} ({{ atleta.contador }}), </span>
-            </div>
-            <div class="card-action center">
-                {{ estatistica.assiduidade.titulo }}
-            </div>
+    <div class="row  z-depth-3">
+        <div class="col s12 m6 l6">
+            <h3>{{ estatistica.assiduidade.titulo }}</h3>
+            <ol>
+                <li *ngFor="let atleta of estatistica.assiduidade.atletas">{{ atleta.atleta }} ({{ atleta.contador }})</li>
+            </ol>
+        </div>
+        <div class="col s12 m6 l6">
+            <h3>{{ estatistica.balanidade.titulo }}</h3>
+            <ol>
+                <li *ngFor="let atleta of estatistica.balanidade.atletas">{{ atleta.atleta }} ({{ atleta.contador }})</li>
+            </ol>
         </div>
     </div>
-    <div class="centered-content-full" *ngIf="estatistica">
-        <div class="card col darken-1 z-depth-3">
-            <div class="card-content center">
-                <span *ngFor="let atleta of estatistica.balanidade.atletas">{{ atleta.atleta }} ({{ atleta.contador }}), </span>
-            </div>
-            <div class="card-action center">
-                {{ estatistica.balanidade.titulo }}
-            </div>
-        </div>
-    </div>
-
 </div>
