@@ -45,9 +45,9 @@ export class ConfirmacaoComponent implements OnInit {
         return estaConfirmado.length === 1;
     }
 
-    confirmar(jogo) {
+    confirmar() {
         const json: any = {};
-        json.jogo = jogo.id;
+        json.jogo = this.jogo.id;
         json.atleta = this.autenticacaoService.getToken();
         this.postService.send(this.CONFIRMATION_SERVICE, json).subscribe(
             () => this.sucesso(), error => this.erro(error)
