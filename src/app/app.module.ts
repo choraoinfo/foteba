@@ -31,6 +31,7 @@ import { ConfiguracaoService } from './service/configuracao.service';
 import { BalaniarComponent } from './component/balaniar/balaniar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmacaoComponent } from './component/confirmacao/confirmacao.component';
+import { CartaoComponent } from './component/cartao/cartao.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +48,8 @@ import { ConfirmacaoComponent } from './component/confirmacao/confirmacao.compon
         MensagemComponent,
         JogosComponent,
         BalaniarComponent,
-        ConfirmacaoComponent
+        ConfirmacaoComponent,
+        CartaoComponent
     ],
     imports: [
         BrowserModule,

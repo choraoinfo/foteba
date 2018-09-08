@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Jogo } from '../../entity/jogo';
 import { ImageResolverService } from '../../service/image-resolver.service';
 import { JogoService } from '../../service/jogo.service';
-import { AutenticacaoService } from '../../service/autenticacao.service';
 import { ConfiguracaoService } from '../../service/configuracao.service';
 import { Configuracao } from '../../entity/configuracao';
 
@@ -18,7 +17,6 @@ export class JogosComponent implements OnInit {
 
     constructor(private jogosService: JogoService,
         private imagemResolver: ImageResolverService,
-        private autenticacaoService: AutenticacaoService,
         private configuracaoService: ConfiguracaoService) { }
 
     ngOnInit(): void {

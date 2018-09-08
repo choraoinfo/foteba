@@ -4,34 +4,24 @@
         <div class="card-content white-text">
             <app-confirmacao [jogo]="jogo" (confirmacaoEvent)="listaJogos()"></app-confirmacao>
             <div class="right">
-                <p class="red darken-1 confirmacao" *ngIf="status(jogo) == 1">Jogo cancelado</p>
-                <p class="amber darken-2 confirmacao" *ngIf="status(jogo) == 2">Jogo ainda não confirmado</p>
-                <p class="green darken-1 confirmacao" *ngIf="status(jogo) == 0">Jogo confirmado</p>
+                <p class="red darken-1 confirmacao" *ngIf="status(jogo) == 1">Cancelado</p>
+                <p class="amber darken-2 confirmacao" *ngIf="status(jogo) == 2">Não confirmado</p>
+                <p class="green darken-1 confirmacao" *ngIf="status(jogo) == 0">Confirmado</p>
             </div>
             <a href="http://www.google.com.br/maps/place/{{ jogo.local.endereco }}" target="_blank">
                 <i class="small material-icons blue lighten-1 confirmacao" title="Ver local do jogo no Maps">location_on</i>
             </a>
             <div class="card-title">{{ jogo.inicio }}h | Local: {{ jogo.local.nome }} | Valor: R$ {{ valorDoJogo(jogo) }}</div>
-            <h5>{{ jogo.confirmados.length }} confirmados + {{ jogo.convidados.length }} convidados</h5>
+            <h5>{{ jogo.confirmados.length }} confirmado(s) + {{ jogo.convidados.length }} convidado(s)</h5>
             <div class="centered-content">
                 <div class="card col darken-1 z-depth-3" *ngFor="let confirmado of jogo.confirmados">
-                    <div class="card-content atleta center">
-                        <img class="portrait" src="{{ getAvatar(confirmado.atleta, jogo) }}" alt="{{ confirmado.atleta.apelido }}">
-                    </div>
-                    <div class="card-action center">
-                        {{ confirmado.atleta.apelido }}
-                    </div>
+                    <app-cartao [atleta]="confirmado.atleta" [imagem]="getAvatar(confirmado.atleta, jogo)"></app-cartao>
                 </div>
             </div>
-            <h5>{{ jogo.balaniantes.length }} balaniantes</h5>
+            <h5>{{ jogo.balaniantes.length }} balaniante(s)</h5>
             <div class="centered-content">
                 <div class="card col darken-1 z-depth-3" *ngFor="let balaniante of jogo.balaniantes">
-                    <div class="card-content atleta center">
-                        <img class="portrait" src="./assets/img/balani.png" alt="{{ balaniante.atleta.apelido }}">
-                    </div>
-                    <div class="card-action center">
-                        {{ balaniante.atleta.apelido }}
-                    </div>
+                    <app-cartao [atleta]="balaniante.atleta" [imagem]="'./assets/img/balani.png'"></app-cartao>
                 </div>
             </div>
         </div>

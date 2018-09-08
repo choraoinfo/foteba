@@ -2,24 +2,6 @@
     grid-template-columns: repeat(auto-fill, 120px);
 }
 
-.card {
-    background-color: #d9e1dc;
-}
-
-.card-action {
-    padding: 5px;
-    color: #000;
-}
-
-.atleta {
-    padding: 5px;
-    min-height: 110px;    
-}
-
-.portrait {
-    max-width: 90px;
-}
-
 .confirmacao {
     padding: 10px;
     margin-bottom: 10px;
