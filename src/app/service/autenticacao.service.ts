@@ -53,7 +53,7 @@ export class AutenticacaoService {
         return user == null ? null : user.token;
     }
 
-    private getLoggedUser() {
+    getLoggedUser() {
         const user = this.storage.get(this.USER_KEY);
         return user == null ? null : JSON.parse(user);
     }

@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Jogo } from '../../entity/jogo';
-import { Observable } from '../../../../node_modules/rxjs/Observable';
 import { ImageResolverService } from '../../service/image-resolver.service';
 import { JogoService } from '../../service/jogo.service';
 import { AutenticacaoService } from '../../service/autenticacao.service';
 import { ConfiguracaoService } from '../../service/configuracao.service';
 import { Configuracao } from '../../entity/configuracao';
-import { AtletaService } from '../../service/atleta.service';
-import { Atleta } from '../../entity/atleta';
-import { PostService } from '../../service/post.service';
 
 @Component({
     selector: 'app-jogos',
@@ -18,32 +14,18 @@ import { PostService } from '../../service/post.service';
 export class JogosComponent implements OnInit {
 
     jogos: Jogo[];
-    private promiseJogos: Observable<Jogo[]>;
     private configuracao: Configuracao;
-    private atleta: Atleta;
-    private CONFIRMATION_SERVICE = 'jogo/confirmacao';
 
     constructor(private jogosService: JogoService,
         private imagemResolver: ImageResolverService,
         private autenticacaoService: AutenticacaoService,
-        private configuracaoService: ConfiguracaoService,
-        private atletaService: AtletaService,
-        private postService: PostService) { }
+        private configuracaoService: ConfiguracaoService) { }
 
     ngOnInit(): void {
         this.configuracaoService.getConfiguracao().subscribe(
             config => this.configuracao = config,
             error => console.log(error)
         );
-        if (this.autenticacaoService.isLogged()) {
-            this.atletaService.getAtleta(this.autenticacaoService.getToken()).subscribe(
-                atleta => {
-                    this.atleta = atleta;
-                },
-                error => console.log(error)
-            );
-        }
-
         this.listaJogos();
     }
 
@@ -58,29 +40,6 @@ export class JogosComponent implements OnInit {
         const valorQuadra = this.configuracao.valor_jogo;
         const qtdeConfirmados = jogo.confirmados.length + jogo.convidados.length;
         return qtdeConfirmados === 0 ? 0 : Math.ceil(valorQuadra / qtdeConfirmados);
-    }
-
-    podeConfirmar(jogo) {
-        return this.autenticacaoService.isLogged() &&
-            jogo.confirmados.length < this.configuracao.max_jogadores &&
-            this.atleta && !this.estaConfirmado(jogo);
-    }
-
-    podeDesconfirmar(jogo) {
-        return this.autenticacaoService.isLogged() &&
-            this.atleta && this.estaConfirmado(jogo);
-    }
-
-    private estaConfirmado(jogo) {
-        if (!this.atleta) {
-            return true;
-        }
-        for (let cont = 0; cont < jogo.confirmados.length; cont++) {
-            if (jogo.confirmados[cont].atleta.id === this.atleta.id && jogo.confirmados[cont].ativo === 1) {
-                return true;
-            }
-        }
-        return false;
     }
 
     getAvatar(atleta, jogo) {
@@ -103,23 +62,5 @@ export class JogosComponent implements OnInit {
             return 2;
         }
         return jogo.status;
-    }
-
-    confirmar(jogo) {
-        const json: any = {};
-        json.jogo = jogo.id;
-        json.atleta = this.autenticacaoService.getToken();
-        this.postService.send(this.CONFIRMATION_SERVICE, json).subscribe(
-            () => this.sucesso(), error => this.erro(error)
-        );
-    }
-
-    private sucesso() {
-        this.listaJogos();
-    }
-
-    private erro(error) {
-        this.listaJogos();
-        console.log(error);
     }
 }
