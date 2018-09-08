@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AutenticacaoService {
 
-    TOKEN_STRING = 'user.token';
+    USER_KEY = 'user_logged';
     SERVICE_URL = 'atleta/login';
     SERVICE_OUT = 'atleta/logout';
 
@@ -19,14 +19,20 @@ export class AutenticacaoService {
         const json = JSON.stringify({ 'user': user, 'pass': pass });
         const observable = this.post.send(this.SERVICE_URL, json);
         observable.subscribe(
-            success => this.saveToken(success.message),
+            success => this.saveData(success),
             error => console.log(error)
         );
         return observable;
     }
 
-    private saveToken(token) {
-        this.storage.save(this.TOKEN_STRING, token);
+    private saveData(data) {
+        const user = {
+            'token': data.message,
+            'id': data.user_id,
+            'nome': data.user_name,
+            'apelido': data.user_nickname
+        };
+        this.storage.save(this.USER_KEY, JSON.stringify(user));
         this.router.navigate(['']);
     }
 
@@ -34,15 +40,21 @@ export class AutenticacaoService {
         this.post.send(this.SERVICE_OUT, { token: this.getToken() }).subscribe(
             () => { }, error => console.log(error)
         );
-        this.storage.delete(this.TOKEN_STRING);
+        this.storage.delete(this.USER_KEY);
         this.router.navigate(['']);
     }
 
     isLogged() {
-        return this.getToken() != null;
+        return this.getLoggedUser() != null;
     }
 
     getToken() {
-        return this.storage.get(this.TOKEN_STRING);
+        const user = this.getLoggedUser();
+        return user == null ? null : user.token;
+    }
+
+    private getLoggedUser() {
+        const user = this.storage.get(this.USER_KEY);
+        return user == null ? null : JSON.parse(user);
     }
 }
