@@ -35,7 +35,7 @@
 }
 
 #topo {
-    background-color: #515151;
+    background-color: #f3f3f3;
     color: #e18109;
 }
 
@@ -44,7 +44,6 @@
 }
 
 #user-access {
-    background-color: #515151;
     text-align: right;
 }
 
@@ -71,10 +70,11 @@ i {
 
 a.menu:link, a.menu:visited, a.menu:active {
     text-decoration: none;
-    color: #fff;
+    color: #a3a3a3;
     padding: 10px;
     line-height: 20px;
     margin: 10px;
+    border-radius: 5px;
 }
 
 a.menu:hover {
@@ -82,7 +82,8 @@ a.menu:hover {
     line-height: 20px;
     margin: 10px;
     background-color: #b3b3b3;
-    color: #515151;    
+    color: #515151;
+    border-radius: 5px;
 }
 
 a.menuMobile:link, a.menuMobile:visited, a.menuMobile:active {

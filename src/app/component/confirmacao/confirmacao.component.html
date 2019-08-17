@@ -1,4 +1,4 @@
-<i class="small material-icons green darken-1 confirmacao" *ngIf="podeConfirmar()" (click)="confirmar(jogo)" title="Confirmar">person_add</i>
+<i class="small material-icons green lighten-3  z-depth-1 confirmacao" *ngIf="podeConfirmar()" (click)="confirmar(jogo)" title="Confirmar">person_add</i>
 <a routerLink="balaniar" [queryParams]="{ 'jogoid' : jogo.id } ">
-    <i class="small material-icons red darken-5 confirmacao" *ngIf="podeDesconfirmar()" title="Balaniar">clear</i>
+    <i class="small material-icons red lighten-3 z-depth-1 confirmacao" *ngIf="podeDesconfirmar()" title="Balaniar">clear</i>
 </a>

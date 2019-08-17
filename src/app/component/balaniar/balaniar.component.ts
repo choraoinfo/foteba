@@ -45,6 +45,8 @@ export class BalaniarComponent implements OnInit {
     }
 
     private erro(error) {
+        if (error.logout === true)
+            this.autenticacaoService.logout();
         console.log(error);
     }
 }

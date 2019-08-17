@@ -1,15 +1,13 @@
-a i {
-    padding: 5px;
-}
 
 #logged-bar {
     padding-bottom: 10px;
 }
 
 .login-icon {
-    padding: 10px;
+    padding : 5px;
 }
 
-.material-icons {
-    border: 1px ridge #000;
+.login-icon a i {
+    border-radius: 5px;
+    padding: 10px;
 }
