@@ -4,6 +4,7 @@
 }
 
 .centered-content {
+    /* autoprefixer: off */
     grid-template-columns: repeat(auto-fill, 40%);
 }
 

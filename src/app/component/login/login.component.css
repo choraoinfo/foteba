@@ -4,17 +4,20 @@
     padding: 10px;
 }
 .loginFields {
-    background-color: #a3a3a3 !important;
+    background-color: #d3d3d3 !important;
     margin: 5px !important;
-    padding: 5px !important;
+    padding: 7px !important;
     height: auto  !important;   
+    border-radius: 5px;
+    border-bottom: 3px solid #d3d3d3 !important;
 }
 
 .loginFields:focus {
-    border-bottom: 2px solid #f28714 !important;
+    border-bottom: 2px solid #777 !important;
 }
 
 .login-icon {
     padding: 5px;    
     cursor: pointer;
+    border-radius: 5px;
 }
