@@ -36,8 +36,9 @@ export class JogosComponent implements OnInit {
 
     valorDoJogo(jogo) {
         const valorQuadra = this.configuracao.valor_jogo;
-        const confirmaosNaoGoleiros = jogo.confirmados.filter(confirma => confirma.atleta.goleiro_fixo == 0).length;
-        const qtdeConfirmados = confirmaosNaoGoleiros + jogo.convidados.length;
+        const confirmadosNaoGoleiros = jogo.confirmados.filter(confirma => confirma.atleta.goleiro_fixo == 0).length;
+        const convidadosNaoGoleiros = jogo.convidados.filter(convidado => convidado.goleiro_fixo == 0).length;
+        const qtdeConfirmados = confirmadosNaoGoleiros + convidadosNaoGoleiros;
         return qtdeConfirmados === 0 ? 0 : Math.ceil(valorQuadra / qtdeConfirmados);
     }
 
