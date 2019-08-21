@@ -4,11 +4,16 @@
 }
 
 .portrait {
-    max-width: 100px;
+    max-height: 100%;
 }
 
 .card {
     background-color: #d9e1dc;
+}
+
+.card-content {
+    height: 120px;
+    width: 120px;
 }
 
 .card-action {
