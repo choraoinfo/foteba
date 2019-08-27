@@ -58,7 +58,8 @@ export class JogosComponent implements OnInit {
     }
 
     status(jogo) {
-        if (jogo.status !== 1 && jogo.confirmados.length < this.configuracao.min_jogadores) {
+        const qtdeConfirmados = jogo.convidados.length + jogo.confirmados.length;
+        if (jogo.status !== 1 && qtdeConfirmados < this.configuracao.min_jogadores) {
             return 2;
         }
         return jogo.status;
