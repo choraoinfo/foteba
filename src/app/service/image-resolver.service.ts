@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ImageResolverService {
 
-    BASE_URL = 'http://foteba-api.kennethbecker.com.br/';
+    BASE_URL = 'http://foteba.kennethbecker.com.br/';
     constructor() { }
 
     resolveThumbnailAvatar(atleta) {
