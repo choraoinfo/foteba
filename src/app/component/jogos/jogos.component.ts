@@ -43,14 +43,15 @@ export class JogosComponent implements OnInit {
     }
 
     getAvatar(atleta, jogo) {
-        if (atleta.saldo >= this.valorDoJogo(jogo)) {
+        if (atleta.goleiro_fixo == '1' || atleta.saldo >= this.valorDoJogo(jogo)) {
             return this.getImagem(atleta);
         }
         return './assets/img/selo.png';
     }
 
     getImagem(atleta) {
-        return this.imagemResolver.resolveThumbnailAvatar(atleta);
+        // return this.imagemResolver.resolveThumbnailAvatar(atleta);
+        return this.imagemResolver.resolveImageAvatar(atleta);
     }
 
     podeRenderizar() {
@@ -63,5 +64,9 @@ export class JogosComponent implements OnInit {
             return 2;
         }
         return jogo.status;
+    }
+
+    getCorCartao(atleta, valor){
+        return atleta.goleiro_fixo == '1' || atleta.saldo >= valor ? "green lighten-3" : "red lighten-3";
     }
 }

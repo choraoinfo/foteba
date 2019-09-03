@@ -1,6 +1,7 @@
 <div class="card-content atleta center">
+    <img *ngIf="atleta.goleiro_fixo == 1" class="goleiro-luva" src="./assets/img/luva.jpg" />
     <img class="portrait" src="{{ imagem }}" alt="{{ atleta.apelido }}">
 </div>
-<div class="card-action center">
+<div class="card-action center {{ cor }} ">
     {{ atleta.apelido }}
 </div>

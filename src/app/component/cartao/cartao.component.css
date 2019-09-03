@@ -1,10 +1,12 @@
 .atleta {
-    padding: 5px;
-    min-height: 110px;    
+    padding: 0px;
+    min-height: 110px;
 }
 
 .portrait {
+    max-width: 100%;
     max-height: 100%;
+    overflow: hidden;
 }
 
 .card {
@@ -19,4 +21,11 @@
 .card-action {
     padding: 5px;
     color: #000;
+}
+
+.goleiro-luva {
+    top: 2px;
+    right: 2px;
+    width: 20px;
+    position: absolute;
 }

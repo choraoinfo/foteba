@@ -12,6 +12,8 @@ export class CartaoComponent implements OnInit {
     atleta: Atleta;
     @Input()
     imagem: string;
+    @Input()
+    cor: string;
 
     constructor() { }
 

@@ -15,7 +15,7 @@
             <h5>{{ jogo.confirmados.length }} confirmado(s) + {{ jogo.convidados.length }} convidado(s)</h5>
             <div class="centered-content">
                 <div class="card col darken-1 z-depth-1" *ngFor="let confirmado of jogo.confirmados">
-                    <app-cartao [atleta]="confirmado.atleta" [imagem]="getAvatar(confirmado.atleta, jogo)"></app-cartao>
+                    <app-cartao [atleta]="confirmado.atleta" [imagem]="getAvatar(confirmado.atleta, jogo)" [cor]="getCorCartao(confirmado.atleta, valorDoJogo(jogo))"></app-cartao>
                 </div>
             </div>
             <h5>{{ jogo.balaniantes.length }} balaniante(s)</h5>
