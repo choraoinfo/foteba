@@ -7,7 +7,7 @@ import { BehaviorSubject } from '../../../node_modules/rxjs/BehaviorSubject';
 @Injectable()
 export class PostService {
 
-    BASE_URL = 'http://foteba.kennethbecker.com.br/api/';
+    BASE_URL = 'https://foteba.kennethbecker.com.br/api/';
     private isLoading = 0;
     private observableLoading: BehaviorSubject<number>;
     private message: string;
