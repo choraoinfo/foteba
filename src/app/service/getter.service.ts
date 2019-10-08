@@ -14,7 +14,7 @@ export class GetterService {
     private message: string;
     private observableError: BehaviorSubject<string>;
 
-    BASE_URL = 'https://foteba.kennethbecker.com.br/api/';
+    BASE_URL = 'http://foteba.kennethbecker.com.br/api/';
 
     constructor(private http: HttpClient,
         private autenticacaoService: AutenticacaoService) {

@@ -37,7 +37,8 @@ export class ConfirmacaoComponent implements OnInit {
         if (atletaLogado == null) {
             return false;
         }
-        return this.configuracao && this.configuracao.max_jogadores > this.jogo.confirmados.length && !this.estaConfirmado(atletaLogado);
+        const totalDeJogadores = this.jogo.confirmados.length + this.jogo.convidados.length
+        return this.configuracao && this.configuracao.max_jogadores > totalDeJogadores && !this.estaConfirmado(atletaLogado);
     }
 
     private estaConfirmado(atletaLogado) {
